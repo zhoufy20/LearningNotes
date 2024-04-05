@@ -166,11 +166,31 @@ git rm -r --cached .  #清除缓存
 
 
 
-# 4. jekyll
+# 4. jekyll on Windows
+
+Jekyll 是一个静态站点生成器，内置 GitHub Pages 支持和简化的构建过程。
+
+```ruby
+1.安装 ruby
+https://rubyinstaller.org/downloads/ 
+这里需要安装带有Devkit的，devkit是window系统下必须的。
+输入cmd打开命名窗口，输入`ruby -v`如果出现了ruby的版本号则说明已经安装好了。
+
+2.安装 Rubygems
+https://rubygems.org/pages/download 
+下载.zip版本直接解压缩，输入`ruby setup.rb`,
+等待安装完成后输入`gem -v`如果出现gem的版本号，则说明安装完成。
+
+3.安装 Jekyll
+命令行输入 `gem install jekyll`，等待安装完成后，
+输入jekyll -v ，正常出现版本号即说明安装完成。
+
+4.安装依赖，开启本地服务
+有些模板可能需要安装包的依赖，在下载好的模板的根目录下先执行`gem install bundler`命令，
+来安装gem的依赖包，然后运行`bundle install`和`jekyll server`。
 
 
-
-
+```
 
 
 
