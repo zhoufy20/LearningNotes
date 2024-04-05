@@ -6,14 +6,6 @@
 
 
 
-# English For Paper Writing
-
-- [施一公：如何提高英文的科研写作能力----中国科学院 (cas.cn)](https://www.cas.cn/xw/zjsd/201008/t20100812_2923299.shtml)
-
-- [学生如何提高专业英文阅读能力（转自施一公博客） - Sci-Hub中文社区](https://discuss.sci-hub.org.cn/d/54)
-
-
-
 ## Section1: Graduation Project
 
 ### AGAT(atomic graph attention network )
@@ -57,7 +49,7 @@ The AGAT is recommended strongly to apply for my project, with an accurate predi
 
 In code, `ExtractVaspFiles`
 
-![image-20231202115248028](E:\SomeFile\MdPicture\image-20231202115248028.png)
+![image-20231202115248028](https://s2.loli.net/2024/04/05/cqyuOfbI2M6VDWz.png)
 
 Note: In one AGAT Layer, we separate the nodes into source and destination nodes according to the message-passing direction.
 
@@ -99,7 +91,7 @@ ls -l ./|grep "^d"|wc -l
 - A detailed introduction of the aforementationed approaches about Graph Networks: Recursive Neural Network ---> Graph Neural Network ---> gated recurrent units ---> convolutions on the graph
 - A better comprehension of attention mechanisms: one of the benefits is that it allow for dealing with variable sized inputs, focusing on the most relevant parts of the input to make decisions.
 
-![image-20231214123056198](E:\SomeFile\MdPicture\image-20231214123056198.png)
+![image-20231214123056198](https://s2.loli.net/2024/04/05/D4IOm7GBhjeCNSn.png)
 
 
 
@@ -136,7 +128,7 @@ We propose a chemically inspired graph neural network machine learning model, Bo
 - BonDNet maps the difference between the molecular representations of the reactants and products to the reaction BDE. Because of the use of this difference representation and the introduction of global features, including molecular charge.
 - **I have no idea how to describe the breaking bonds reaction** through the difference between the molecular representations of the reactants and products.
 
-<img src="E:\SomeFile\MdPicture\image-20231214134325988.png"  alt="image-20231214134325988" style="zoom:50%;" />
+![image-20231214134325988](https://s2.loli.net/2024/04/05/Q3hPAf4HV72euUJ.png)
 
 
 
@@ -236,15 +228,23 @@ Here we present **the Crystal Hamiltonian Graph Neural Network** (CHGNet), a gra
 
 - **How to add electronic information to my network?**
 
-![Fig. 1](E:\SomeFile\MdPicture\42256_2023_716_Fig1_HTML-1702534120554-3.png)
+![42256_2023_716_Fig1_HTML-1702534120554-3](https://s2.loli.net/2024/04/05/slJ1npKSOiAfeL6.png)
 
 
 
 
 
+利用成键的非简谐性研究键能和键长的关系，非简谐性指的是分子振动偏离简谐近似的情况，它对于描述化学键在受到扰动时的行为至关重要。
 
 
 
+
+
+- 找到峰值力对应的文件，提取能量；
+
+- 找到初始能量，作差
+
+- 查看键长
 
 
 
@@ -296,8 +296,8 @@ Here we present **the Crystal Hamiltonian Graph Neural Network** (CHGNet), a gra
 
 描述符
 
-![image-20231202111555051](E:\SomeFile\MdPicture\image-20231202111555051.png)
+![image-20231202111555051](https://s2.loli.net/2024/04/05/t3CnSJsx7izyPed.png)
 
 GCN
 
-![image-20231202112608477](E:\SomeFile\MdPicture\image-20231202112608477.png)
+![image-20231202112608477](E:\SomeFile\Photos\MdPicture\image-20231202112608477.png)
