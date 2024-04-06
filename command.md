@@ -162,6 +162,11 @@ ssh -T git@github.com
 
 git status --ignored  #查看状态，包括忽略的文件
 git rm -r --cached .  #清除缓存
+
+git branch -u origin/main main  #设置本地 main 分支跟踪远程 origin 的 main 分支
+git remote set-head origin main  #设置远程 origin 的 HEAD 指向 main 分支
+git branch -d <branchname>  #删除本地分支
+git branch -d -r <branchname>  #删除远程分支
 ```
 
 
