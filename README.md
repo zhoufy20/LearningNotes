@@ -284,20 +284,3 @@ Here we present **the Crystal Hamiltonian Graph Neural Network** (CHGNet), a gra
 >
 >interpretation:
 
-
-
-
-
-
-
-
-
-## Last Section: Need To do
-
-描述符
-
-![image-20231202111555051](https://s2.loli.net/2024/04/05/t3CnSJsx7izyPed.png)
-
-GCN
-
-![image-20231202112608477](E:\SomeFile\Photos\MdPicture\image-20231202112608477.png)

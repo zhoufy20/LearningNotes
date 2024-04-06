@@ -12,8 +12,6 @@ typora-root-url: ./..\Configuration\SomeFile\MdPicture
 
 
 
-
-
 ```python
 ### 解压和压缩命令
 zip -r /home/myhome.zip /home
@@ -115,6 +113,11 @@ conda search package_name
 conda update package_name 
 conda install package_name
 conda uninstall package_name
+
+### 环境打包
+conda install -c conda-forge conda-pack
+conda pack -n 虚拟环境名称 -o output.tar.gz
+tar -xzvf output.tar.gz
 
 ### 使用conda pack进行环境迁移 
 ### Conda-pack 是一个命令行工具，用于打包 conda 环境，其中
