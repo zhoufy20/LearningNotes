@@ -114,17 +114,10 @@ conda update package_name
 conda install package_name
 conda uninstall package_name
 
-### 环境打包
+### conda pack 环境打包
 conda install -c conda-forge conda-pack
 conda pack -n 虚拟环境名称 -o output.tar.gz
 tar -xzvf output.tar.gz
-
-### 使用conda pack进行环境迁移 
-### Conda-pack 是一个命令行工具，用于打包 conda 环境，其中
-### 包括该环境中安装的软件包的所有二进制文件。
-conda pack -n <env_name>
-mkdir new_env
-tar -xzvf attnGAN.tar.gz -C /root/miniconda3/envs/new_new
 
 # pip install(ERROR: Could not install packages due to an OSError:)
 pip install pymysql -i https://pypi.tuna.tsinghua.edu.cn/simple
