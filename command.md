@@ -1,5 +1,5 @@
-
-# 1. Computer
+# Some significant commands 
+## 1. Computer
 
 > [超算入门课程1 致敬"银河•天河"40年超级计算奋进征途 | 超算小站 (mrzhenggang.com)](https://nscc.mrzhenggang.com/supercomputer-courses/history-40-years/)
 >
@@ -85,7 +85,7 @@ default  = feiyu
 
 
 
-# 2. Anaconda
+## 2. Anaconda
 
 [Anaconda conda](https://blog.csdn.net/chenxy_bwave/article/details/119996001)
 
@@ -143,7 +143,7 @@ cudnn.is_acceptable(a.cuda())
 
 
 
-# 3. Git
+## 3. Git
 
 [The use of .gitignore of zhihu](https://zhuanlan.zhihu.com/p/52885189)
 
@@ -164,7 +164,7 @@ git branch -d -r <branchname>  #删除远程分支
 
 
 
-# 4. jekyll on Windows
+## 4. jekyll on Windows
 
 Jekyll 是一个静态站点生成器，内置 GitHub Pages 支持和简化的构建过程。
 
