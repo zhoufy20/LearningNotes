@@ -7,7 +7,7 @@
 >
 > [一篇教会你写90%的shell脚本 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/264346586#:~:text=shell脚本就,用编译即可运行。)
 
-```python
+```bash
 ### 解压和压缩命令
 zip -r /home/myhome.zip /home
 unzip /home/myhome.zip
@@ -85,7 +85,7 @@ default  = feiyu
 
 [Anaconda conda](https://blog.csdn.net/chenxy_bwave/article/details/119996001)
 
-```python
+```bash
 ### conda的更新
 conda install anaconda 
 
@@ -97,8 +97,8 @@ conda activate Deep
 conda deactivate Deep
 
 ### 增删新环境
-conda create -n Deep python=3.9
-conda remove -n Deep --all
+conda create -n envname python=3.9
+conda remove -n envname --all
 
 ### 查询包的安装情况
 conda list 
@@ -141,7 +141,6 @@ import torch # 如果pytorch安装成功即可导入
 print(torch.cuda.is_available()) # 查看CUDA是否可用
 print(torch.cuda.device_count()) # 查看可用的CUDA数量
 print(torch.version.cuda) # 查看CUDA的版本号
-
 ### 确认CUDNN安装是否成功
 import torch
 print(torch.backends.cudnn.version()) # 能够正确返回8200
@@ -149,8 +148,6 @@ from torch.backends import cudnn # 若正常则静默
 cudnn.is_available() # 若正常返回True
 a=torch.tensor(1.)
 cudnn.is_acceptable(a.cuda()) # 若正常返回True
-
- 
 
 ```
 
@@ -160,7 +157,7 @@ cudnn.is_acceptable(a.cuda()) # 若正常返回True
 
 [The use of .gitignore of zhihu](https://zhuanlan.zhihu.com/p/52885189)
 
-```python
+```bash
 git config --global user.name "zhoufy20"
 git config --global user.email "zhoufy20@lzu.edu.cn"
 ssh-keygen -t rsa -C "zhoufy20@lzu.edu.cn"
@@ -177,7 +174,31 @@ git branch -d -r <branchname>  #删除远程分支
 
 
 
-## 4. jekyll on Windows
+## 4. Cluster operation
+
+#### 4.1 节点状态排查 
+
+```bash
+sinfo  # 查看集群所有计算节点状态
+sinfo -p nodename # 查看指定计算节点状态
+# idle表示节点当前为空闲状态, alloc表示节点当前被占用
+# drng表示当前节点正准备排除出集群, drain表示已经排除出集群(两者都表明节点状态异常)
+sinfo -R  # 查看异常状态节点的原因
+```
+
+#### 4.2 作业状态排查
+
+
+
+
+
+
+
+
+
+
+
+## 5. jekyll on Windows
 
 Jekyll 是一个静态站点生成器，内置 GitHub Pages 支持和简化的构建过程。
 
@@ -206,15 +227,9 @@ https://rubygems.org/pages/download
 
 
 
+## 6. Docker ( Linux )
 
-
-
-
-
-
-# 4. Docker ( Linux )
-
-## 1. linux内核版本依赖  **kernel version >= 3.8**
+### 1. linux内核版本依赖  **kernel version >= 3.8**
 
 ```dockerfile
 uname -a | awk '{split($3, arr, "-"); print arr[1]}'
@@ -222,7 +237,7 @@ uname -a | awk '{split($3, arr, "-"); print arr[1]}'
 
 
 
-## 2. 添加Docker repository yum源
+### 2. 添加Docker repository yum源
 
 ```dockerfile
 # 国内源, 速度更快, 推荐
@@ -238,14 +253,14 @@ sudo yum-config-manager \
 >3. yum clean all
 >4. yum makecache
 
-## 3. 开始安装Docker Engine
+### 3. 开始安装Docker Engine
 
 ```dockerfile
 sudo yum makecache fast
 sudo yum install docker-ce docker-ce-cli containerd.io
 ```
 
-## 4. 开启Docker
+### 4. 开启Docker
 
 ```dockerfile
 ### 开启Docker
