@@ -1,13 +1,11 @@
 # Some significant commands 
-## 1. Computer
+## 1. Linux
 
 > [超算入门课程1 致敬"银河•天河"40年超级计算奋进征途 | 超算小站 (mrzhenggang.com)](https://nscc.mrzhenggang.com/supercomputer-courses/history-40-years/)
 >
 > [Shell笔记_doordiey的博客-CSDN博客](https://blog.csdn.net/doordiev/article/details/120761851)
 >
 > [一篇教会你写90%的shell脚本 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/264346586#:~:text=shell脚本就,用编译即可运行。)
-
-
 
 ```python
 ### 解压和压缩命令
@@ -52,7 +50,6 @@ ps -def | grep "cp"
 # 停止运行
 kill -9  进程号PID
 
-
 # 搜索 Linux 中的文件夹
 find ~/ZSW/VASP/DFT-Fracture/zhoufyData -iname "CH3CH3"
 # 查找当前目录下的文件，输出绝对路径
@@ -66,7 +63,6 @@ awk '$1>1.00 {print}' 1.txt
 <https://zhuanlan.zhihu.com/p/296320428>
 ls -l ./|grep "^d"|wc -l
 
-
 ### wsl创建
 Invoke-WebRequest -Uri https://wsldownload.azureedge.net/Ubuntu_2004.2020.424.0_x64.appx -OutFile Ubuntu20.04.appx -UseBasicParsing
 
@@ -75,10 +71,10 @@ Expand-Archive .\Ubuntu.zip -Verbose
 cd .\Ubuntu\
 .\ubuntu2004.exe
 
-sudo passwd
-# 默认登录账户
-sudo vim /etc/wsl.conf
 
+# 默认登录账户
+sudo passwd
+sudo vim /etc/wsl.conf
 [user]
 default  = feiyu
 ```
@@ -120,7 +116,25 @@ tar -xzvf output.tar.gz
 pip install pymysql -i https://pypi.tuna.tsinghua.edu.cn/simple
 清华：https://pypi.tuna.tsinghua.edu.cn/simple
 阿里云：http://mirrors.aliyun.com/pypi/simple
-
+# 恢复为默认源
+conda config --remove-key channels
+# 查看源的相关信息
+conda config --show
+# 切换国内清华源
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+conda config --set show_channel_urls yes
+# 切换国内中科大源
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/msys2/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/bioconda/
+conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/menpo/
+conda config --set show_channel_urls yes
 
 ### 检查pytorch是否安装成功 
 import torch # 如果pytorch安装成功即可导入
@@ -130,15 +144,14 @@ print(torch.version.cuda) # 查看CUDA的版本号
 
 ### 确认CUDNN安装是否成功
 import torch
-print(torch.backends.cudnn.version())
-# 能够正确返回8200
+print(torch.backends.cudnn.version()) # 能够正确返回8200
 from torch.backends import cudnn # 若正常则静默
-cudnn.is_available() 
-# 若正常返回True
+cudnn.is_available() # 若正常返回True
 a=torch.tensor(1.)
-cudnn.is_acceptable(a.cuda()) 
-# 若正常返回True
+cudnn.is_acceptable(a.cuda()) # 若正常返回True
+
  
+
 ```
 
 
@@ -187,16 +200,7 @@ https://rubygems.org/pages/download
 有些模板可能需要安装包的依赖，在下载好的模板的根目录下先执行`gem install bundler`命令，
 来安装gem的依赖包，然后运行`bundle install`和`jekyll server`。
 
-
 ```
-
-
-
-
-
-
-
-
 
 
 
