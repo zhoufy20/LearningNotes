@@ -1,6 +1,3 @@
----
-typora-root-url: ./..\Configuration\SomeFile\MdPicture
----
 
 # 1. Computer
 
