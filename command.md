@@ -170,6 +170,11 @@ git branch -u origin/main main  #设置本地 main 分支跟踪远程 origin 的
 git remote set-head origin main  #设置远程 origin 的 HEAD 指向 main 分支
 git branch -d <branchname>  #删除本地分支
 git branch -d -r <branchname>  #删除远程分支
+
+# 强制覆盖本地文件
+git reset --hard HEAD
+git clean -f -d
+git pull
 ```
 
 
