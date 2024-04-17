@@ -171,10 +171,10 @@ git remote set-head origin main  #设置远程 origin 的 HEAD 指向 main 分�
 git branch -d <branchname>  #删除本地分支
 git branch -d -r <branchname>  #删除远程分支
 
-# 强制覆盖本地文件
-git reset --hard HEAD
-git clean -f -d
-git pull
+# 强制拉取以覆盖本地更改
+# 执行后本地分支将指向远程仓库的最新版本，并且本地的更改将被覆盖
+git fetch --all
+git reset --hard origin/main
 ```
 
 
