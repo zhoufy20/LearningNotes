@@ -1,4 +1,18 @@
-# Some significant commands 
+# **Some significant commands** 
+
+- [1. Linux](#1-linux)
+- [2. Anaconda](#2-anaconda)
+- [3. Git](#3-git)
+- [4. Cluster operation](#4-cluster-operation)
+  * [4.1 节点状态排查](#41-------)
+  * [4.2 作业状态排查](#42-------)
+- [5. jekyll on Windows](#5-jekyll-on-windows)
+- [6. Docker ( Linux )](#6-docker---linux--)
+  * [1. linux内核版本依赖  **kernel version >= 3.8**](#1-linux----------kernel-version----38--)
+  * [2. 添加Docker repository yum源](#2---docker-repository-yum-)
+  * [3. 开始安装Docker Engine](#3-----docker-engine)
+  * [4. 开启Docker](#4---docker)
+
 ## 1. Linux
 
 > [超算入门课程1 致敬"银河•天河"40年超级计算奋进征途 | 超算小站 (mrzhenggang.com)](https://nscc.mrzhenggang.com/supercomputer-courses/history-40-years/)
@@ -181,7 +195,7 @@ git reset --hard origin/main
 
 ## 4. Cluster operation
 
-#### 4.1 节点状态排查 
+### 4.1 节点状态排查 
 
 ```bash
 sinfo  # 查看集群所有计算节点状态
@@ -191,7 +205,7 @@ sinfo -p nodename # 查看指定计算节点状态
 sinfo -R  # 查看异常状态节点的原因
 ```
 
-#### 4.2 作业状态排查
+### 4.2 作业状态排查
 
 
 

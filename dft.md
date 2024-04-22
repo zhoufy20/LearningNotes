@@ -106,6 +106,8 @@ chgsum.pl AECCAR0 AECCAR2
 
 ```bash
 bader CHGCAR -ref CHGCAR_sum
+
+grep ZVAL POTCAR
 ```
 
 4. One finally note is that you need a fine fft grid to accurately reproduce the correct total core charge. It is essential to do a few calculations, increasing NG(X,Y,Z)F until the total charge is correct.
