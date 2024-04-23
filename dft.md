@@ -1,14 +1,4 @@
-共价键分类：
-
-CC单键 CC双键 CC三键
-
 ![image-20240422091448779](./assets/image-20240422091448779.png)
-
-CHONS      
-
-C-C C=C C3C C-O C=O C-N C3N C-S
-
-N-N N=N N3N N-O N=O O-S
 
 
 
@@ -36,9 +26,13 @@ N-N N=N N3N N-O N=O O-S
 
 
 
+在VASP中，常常计算Bader电荷来得到原子周围的电子数，从而近似得到原子的化合价。Bader电荷分析是理查德·贝德（RichardBader）开发的一种将分子分解为原子的直观方法。Bader电荷分析对原子的定义纯粹是基于电子电荷密度。Bader使用所谓的零磁通表面来划分原子。零通量表面是2D表面，其上电荷密度垂直于表面。
+
+通常在分子系统中，电荷密度在原子之间达到最小值，这是将原子彼此分开的自然位置。除了作为分子中原子可视化的直观方案外，Bader的定义通常也可用于电荷分析。例如，Bader体积内的电荷与原子的总电子电荷很接近。电荷分布可用于确定相互作用的原子或分子的多极矩。Bader的分析也被用来定义原子的硬度，可以用来量化从原子中去除电荷的成本。
 
 
 
+考虑的分子有
 
 
 
@@ -66,7 +60,7 @@ N-N N=N N3N N-O N=O O-S
 
 ### Introduction
 
- [Richard Bader](http://www.chemistry.mcmaster.ca/bader/), from McMaster University, developed an intuitive way of dividing molecules into atoms. His definition of an atom is based purely on the electronic charge density. Bader uses what are called **zero flux surfaces** to divide atoms. A zero flux surface is a 2-D surface on which the charge density is a minimum perpendicular to the surface. Typically in molecular systems, the charge density reaches a minimum between atoms and this is a natural place to separate atoms from each other.
+[Richard Bader](http://www.chemistry.mcmaster.ca/bader/), from McMaster University, developed an intuitive way of dividing molecules into atoms. His definition of an atom is based purely on the electronic charge density. Bader uses what are called **zero flux surfaces** to divide atoms. A zero flux surface is a 2-D surface on which the charge density is a minimum perpendicular to the surface. Typically in molecular systems, the charge density reaches a minimum between atoms and this is a natural place to separate atoms from each other.
 
 ### Output files
 

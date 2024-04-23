@@ -6,9 +6,60 @@
 
 
 
-## Section1: Graduation Project
+## Section1: Osmotic energy generation
 
-### AGAT(atomic graph attention network )
+## 1.1 aramid nanofiber (ANF) semiconductor-based membranes
+
+### *1.1.1. Light-enhanced osmotic energy generation with an aramid nanofiber membrane*
+
+==CONTENT:== Here, we utilized **aramid nanofiber (ANF) semiconductor-based membranes** to enable light-driven proton
+transport for osmotic energy generation. Under unilateral illumination, the light-driven proton transport system
+converted light energy into electrical energy and showed wavelength- and intensity-dependent transmembrane
+potentials and currents. 
+
+
+
+
+
+### *1.1.2. A synergistic interfacial and topological strategy for reinforcing aramid nanofiber films*
+
+==CONTENT:== Herein, we present **a synergistic enhancement strategy** by achieving strong interfacial interactions between aramid nanofibers and graphene oxide nanosheets through a neutralization reaction in a dipolar solvent and regulating the topological properties using polymer micelles to form a compact structure, leading to the formation of a super-strong and super-tough nanofiber film.
+
+
+
+
+
+### *1.1.3. Transition metal hydroxides@conducting MOFs on carbon nanotube yarns for ultra-stable quasi-solid-state supercapacitors with a ship-in-a-bottle architecture*
+
+==CONTENT:== Herein, we report **a ship-in-a-bottle architecture on carbon nanotube yarn (CNTY) based SCs**, in which transition metal hydroxide (TMH) nanoparticles (Ni(OH)2 or Co(OH)2) are confined in conducting nanoporous metal–organic frameworks (MOFs, Ni3(HITP)2) which anchor onto CNTY, involves the synergy of nanoconfinement and hydrogen bonding network to mutually support each phase toward improved electrochemical performance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Section2: Graduation Project
+
+### 2.1 AGAT(atomic graph attention network )
 
 > <Design high-entropy electrocatalyst via interpretable deep graph attention learning>
 >
@@ -24,9 +75,9 @@
 
 
 
-==Method== The Author developed *an accurate and efficent atomic graph attention network* (AGAT) to accelerate the desigh of the high performance HEECs (high-entropy electrocatalyst). Finally, we apply the well-trained AGAT model to explore the compositional space and predict the high-performance catalysts.
+**Method** The Author developed *an accurate and efficent atomic graph attention network* (AGAT) to accelerate the desigh of the high performance HEECs (high-entropy electrocatalyst). Finally, we apply the well-trained AGAT model to explore the compositional space and predict the high-performance catalysts.
 
-==Content==
+**Content**
 
 - **There are two problems need to be solved for DFT.** First, abundant computational resources are needed to reveal the energy distribution of a single adsorbed intermediate on one surface because of the huge compositional space and abundant active sites on the surfaces. Second, new calculations should be performed for new elemental combinations, making the search for promising HEECs extremely expensive.
 - **There are no universal rules for selecting descriptors**, which strongly depends on domain knowledge for ML.
@@ -283,4 +334,6 @@ Here we present **the Crystal Hamiltonian Graph Neural Network** (CHGNet), a gra
 >Artical Adress:
 >
 >interpretation:
+
+
 
