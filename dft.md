@@ -40,6 +40,11 @@
 
 
 
+## 2. Electron transfer in a chemical process
+
+### 2.1 Difference charge density
+
+**The differential charge density** is the difference in the charge density distribution obtained by subtracting the charge density before the operation from the charge density after the operation such as adsorption or substitution of a system.
 
 
 
@@ -50,7 +55,8 @@
 
 
 
-## Bader Charge
+
+### 2.2 Bader Charge
 
 >http://theory.cm.utexas.edu/henkelman/code/bader/
 >
@@ -58,11 +64,11 @@
 >
 >[VASP从入门到入土：Bader电荷的计算 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/673557738)
 
-### Introduction
+#### 2.2.1 Introduction
 
 [Richard Bader](http://www.chemistry.mcmaster.ca/bader/), from McMaster University, developed an intuitive way of dividing molecules into atoms. His definition of an atom is based purely on the electronic charge density. Bader uses what are called **zero flux surfaces** to divide atoms. A zero flux surface is a 2-D surface on which the charge density is a minimum perpendicular to the surface. Typically in molecular systems, the charge density reaches a minimum between atoms and this is a natural place to separate atoms from each other.
 
-### Output files
+#### 2.2.2 Output files
 
 The following output files are generated: `ACF.dat`, `BCF.dat`, `AtomVolumes.dat`.
 
@@ -72,7 +78,7 @@ The following output files are generated: `ACF.dat`, `BCF.dat`, `AtomVolumes.dat
 
 - `AtomVolumes.dat` contains the number of each volume that has been assigned to each atom. These numbers correspond to the number of the BvAtxxxx.dat files.
 
-### Note for VASP users
+#### 2.2.3 Note for VASP users
 
 One major issue with the charge density (CHGCAR) files from the VASP code is that they only contain the valance charge density. The Bader analysis assumes that charge density maxima are located at atomic centers (or at pseudoatoms). Aggressive pseudopotentials remove charge from atomic centers where it is both expensive to calculate and irrelevant for the important bonding properties of atoms.
 
@@ -100,13 +106,16 @@ chgsum.pl AECCAR0 AECCAR2
 
 ```bash
 bader CHGCAR -ref CHGCAR_sum
-
-grep ZVAL POTCAR
 ```
 
 4. One finally note is that you need a fine fft grid to accurately reproduce the correct total core charge. It is essential to do a few calculations, increasing NG(X,Y,Z)F until the total charge is correct.
 
+   The number of electrons printed in the `ACF.dat` must be an integer! This is very important.
 
+```bash
+grep ZVAL POTCAR
+grep NGX OUTCAR
+```
 
 
 
