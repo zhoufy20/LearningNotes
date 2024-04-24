@@ -1,8 +1,8 @@
-# 文献阅读总结
+# Paper-List
 
-> 不断涌现的论文，其实就是学术界的升级安装包。你不断读论文，就是为了跟学术共同体**保持同步**。但是，只有你跟这篇论文所**依赖**的那些基础知识同步以后，安装这个升级包才有意义，也才能水到渠成。
+> The continuous emergence of papers, in fact, is the academic upgrade of the installation package. You keep reading papers to keep up with the academic community. However, it only makes sense to install this upgrade package once you are in sync with the basics on which this paper relies.
 >
-> 文献阅读总结聚焦：研究了什么、创新点在哪、研究方法是什么、得出的结论是什么。
+> Literature review summary focus: what is studied, where is the innovation point, what is the research method, what is the conclusion.
 
 
 
@@ -12,10 +12,13 @@
 
 ### *1.1.1. Light-enhanced osmotic energy generation with an aramid nanofiber membrane*
 
-==CONTENT:== Here, we utilized **aramid nanofiber (ANF) semiconductor-based membranes** to enable light-driven proton
-transport for osmotic energy generation. Under unilateral illumination, the light-driven proton transport system
-converted light energy into electrical energy and showed wavelength- and intensity-dependent transmembrane
-potentials and currents. 
+==CONTENT:== Here, we utilized **aramid nanofiber (ANF) semiconductor-based membranes** to enable light-driven proton transport for osmotic energy generation. Under unilateral illumination, the light-driven proton transport system converted light energy into electrical energy and showed wavelength- and intensity-dependent transmembrane potentials and currents. 
+
+
+
+
+
+
 
 
 
@@ -23,7 +26,15 @@ potentials and currents.
 
 ### *1.1.2. A synergistic interfacial and topological strategy for reinforcing aramid nanofiber films*
 
-==CONTENT:== Herein, we present **a synergistic enhancement strategy** by achieving strong interfacial interactions between aramid nanofibers and graphene oxide nanosheets through a neutralization reaction in a dipolar solvent and regulating the topological properties using polymer micelles to form a compact structure, leading to the formation of a super-strong and super-tough nanofiber film.
+==CONTENT:== Herein, we present **a synergistic enhancement strategy** by regulating the interfacial interaction and topological structure to prepare a super-strong and super-tough film. Strong interfacial interaction was achieved by Bronsted neutralization reaction between graphene oxide (GO) and aramid nanofibers (ANFs), and the topological structure was regulated using polyvinyl alcohol micelles to greatly reduce structural defects, thus synergistically improving stress transfer among nanomaterials.
+
+The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvinyl alcohol) was fabricated through a sol–gel–film process, and is abbreviated as AGP film.
+
+
+
+
+
+
 
 
 
@@ -75,9 +86,9 @@ potentials and currents.
 
 
 
-**Method** The Author developed *an accurate and efficent atomic graph attention network* (AGAT) to accelerate the desigh of the high performance HEECs (high-entropy electrocatalyst). Finally, we apply the well-trained AGAT model to explore the compositional space and predict the high-performance catalysts.
+==Method== The Author developed *an accurate and efficent atomic graph attention network* (AGAT) to accelerate the desigh of the high performance HEECs (high-entropy electrocatalyst). Finally, we apply the well-trained AGAT model to explore the compositional space and predict the high-performance catalysts.
 
-**Content**
+==Content==
 
 - **There are two problems need to be solved for DFT.** First, abundant computational resources are needed to reveal the energy distribution of a single adsorbed intermediate on one surface because of the huge compositional space and abundant active sites on the surfaces. Second, new calculations should be performed for new elemental combinations, making the search for promising HEECs extremely expensive.
 - **There are no universal rules for selecting descriptors**, which strongly depends on domain knowledge for ML.
