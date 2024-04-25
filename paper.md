@@ -3,6 +3,10 @@
 > The continuous emergence of papers, in fact, is the academic upgrade of the installation package. You keep reading papers to keep up with the academic community. However, it only makes sense to install this upgrade package once you are in sync with the basics on which this paper relies.
 >
 > Literature review summary focus: what is studied, where is the innovation point, what is the research method, what is the conclusion.
+>
+> Research entry point: which methodologies have been employed to address the fundamental issue, what are the strengths and limitations of the approach, and how can it be enhanced.
+
+------
 
 
 
@@ -54,91 +58,274 @@ The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvi
 
 
 
+-----
 
+## Section2: Deep Potential
 
+> [Development of Deep Potential (DP) series of methods on zhihu](https://zhuanlan.zhihu.com/p/348284750)
 
+**The core of the DP methods** is the Deep Potential model for representing the potential energy surfaces of atomic/molecular systems and the DP Generator (DP-GEN) strategy  for generating optimal data sets and reliable DP models.Recently, the extreme combination of DP methods and high-performance computing allowed us to simulate systems of hundreds of millions of atoms with first-principles precision for the first time. **There are three main problems to be solved:** faster and more accurate calculation of electronic structure; Faster and more accurate molecular dynamics simulation; Faster configuration sampling and more accurate free energy calculation.
 
+### 2.1 *DeePMD-kit: A deep learning package for many-body potential energy representation and molecular dynamics*
 
-
-
-
-
-
-
-
-
-
-## Section2: Graduation Project
-
-### 2.1 AGAT(atomic graph attention network )
-
-> <Design high-entropy electrocatalyst via interpretable deep graph attention learning>
+> [https://github.com/deepmodeling/deepmd-kit](https://github.com/deepmodeling/deepmd-kit)
 >
-> Journal：Joule	Impact Factor: 39.80	Published: July 03, 2023
+> [DeePMD-kit’s documentation](https://docs.deepmodeling.com/projects/deepmd/en/master/)
+
+一个完整的模拟过程包括以下步骤：
+
+（1）对于给定的系统，DeePMD-kit先将从头算分子动力学（AIMD）计算得到的**数据转化**（dpdata）为一种自定义的文件格式，其中包括原子的坐标以及原子的能量、力和 virial。
+
+（2） 随后输入到由TensorFLow框架**搭建的势函数网络进行训练**，通过原子坐标预测此时的能量。
+
+（3）训练好的模型将被冻结保存，提供给融合了DeePMD-kit的**传统分子动力学模拟软件**，例如LAMMPS。
+
+（4）**使用LAMMPS对给定的数据进行分子动力学模拟**。需要指出的是，对于同一种系统，不需要重新训练势函数模型，可以复用模型，这正是结合机器学习的优势所在。 
+
+
+
+
+
+### 2.2 *DP-GEN: A concurrent learning platform for the generation of reliable deep learning based potential energy models*
+
+> <DP-GEN: A concurrent learning platform for the generation of reliable deep learning based potential energy models>
+>
+> Journal:  nature machine intelligence	Published:  14 September 2023
+>
+> Lead Author:  Bowen Deng (Department of Materials Science and Engineering, University of California Berkeley)
+>
+> Key words:  machine-learning interatomic potential	magnetic moments	
+>
+> Artical adress:  [CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling](https://www.nature.com/articles/s42256-023-00716-3)
+>
+> Code adress:  [DPGEN’s documentation — DP-GEN documentation (deepmodeling.com)](https://docs.deepmodeling.com/projects/dpgen/en/latest/index.html)
+>
+> [Deepmd-kit & DPGEN 使用笔记 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/362073474)
+
+**利用模型偏差扩充采样的方式很巧妙**，我想谈谈自己在使用时的一些看法和体会。在第一步训练集的准备上，我其实折腾了不少时间。我得出一个结论：Rubbish in，Rubbish out。纵使工具再强，作为使用者也需要对自己的研究问题首先有明确的认识。我相信尝试了深度势能的不仅有深谙模拟之道的老师们，肯定也有像我一样刚接触模拟没多久的小伙伴们。我们顶头有老师天天催着的压力，**但是研究问题一定首先得夯实基础**。没跑过分子模拟、没接触过第一性原理，上手就拿数据跑，是不可取的。惭愧的说，我不知道废了多少次数据，因为每每发现数据不合理。比如：初始构型与理论构型偏差大，没有考虑色散能修正，采样间隔不合理，采样方案不合适等等。当然，这个过程中得益开源社区开发者和使用者的各位老师同学的帮助，每每替我解惑，让我得以一步步发现和解决问题。**网上有不少的资源，学会合理利用**，在有一定知识储备的情况下与社区的大家交流讨论，在错误中不断成长，才是正确之道。也衷心希望我们使用者和开发者能共同将这个开源社区做大做好。
+
+**DP-GEN的流程基本是全自动化的**，training、exploration、labeling，省去了不少麻烦。但自己的尝试的过程中也产生了不少的疑惑。比如，采用粗糙势函数探索构型空间得到的构型是否真的能很好改善势能面的覆盖程度？如何保证训练、探索和标记在计算成本上的最优化？不同参数设置对训练的影响？不合理的局部构型对整体势函数的影响？更好的采样方法？我发现全自动的过程中，**很多细节被忽略了**，需要我们做更加系统的测试，逐渐形成一套指导方案，从而实现学习的最优化。而自动化的过程中也应加入更多的经验性的思考去指导，比如最重要的采样方案的考虑。当然我也曾想过训练时的初始参数能否继承等问题。以上的问题仅代表自己的胡思乱想，不一定有价值。但我觉得正如之前林峰老师说的，开发软件最重要的是使用的过程，是完善的过程。而这个过程需要整个社区的人一起去经历，做好问题的沉淀、探讨和归纳，让这样一个平台更加robust。
+
+
+
+### 2.3 BPNN and DPNN
+
+>  The Behler-Parrinello neural network (BPNN) and the deep tensor neural network (DTNN).
+
+BPNN uses the so-called symmetry functions as input and a standard neural network as the fitting function; DTNN, on the other hand, uses as input a vector of nuclear charges and an inter-atomic distance matrix, and introduces a sequence of interaction passes where “the atom representations influence each other in a pair-wise fashion”.
+
+
+
+### 2.3 *CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling*
+
+> <CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling>
+>
+> Journal:  nature machine intelligence	Published:  14 September 2023
+>
+> Lead Author:  Bowen Deng (Department of Materials Science and Engineering, University of California Berkeley)
+>
+> Key words:  machine-learning interatomic potential	magnetic moments	
+>
+> Artical adress:  [CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling](https://www.nature.com/articles/s42256-023-00716-3)
+>
+> Code adress:  [CHGNet (lbl.gov)](https://chgnet.lbl.gov/)
+>
+> [https://github.com/CederGroupHub/chgnet](https://github.com/CederGroupHub/chgnet)
+>
+> [Ceder课题组最新工作：利用图神经网络构造通用势能函数加速能源材料模拟研发 (qq.com)](https://mp.weixin.qq.com/s/wlLpdPjyVbtsfa3ElXkh4w)
+
+==Content:== Large-scale simulations with complex electron interactions remain one of the greatest challenges for atomistic modelling. Although **classical force fields** often fail to describe the coupling between electronic states and ionic rearrangements, the more accurate **ab initio molecular dynamics** suffers from computational complexity that prevents long-time and large-scale simulations, which are essential to study technologically relevant phenomena. 
+
+Here we present **the Crystal Hamiltonian Graph Neural Network** (CHGNet), a graph neural network-based machine-learning interatomic potential (MLIP) that models the universal potential energy surface. 
+
+The Materials Project Database contains a vast collection of DFT calculations on ~146,000 inorganic materials composed of 89 elements. A comprehensive Materials Project Trajectory (MPtrj) Dataset with 1,580,395 atom configurations, 1,580,395 energies, 7,944,833 magmoms, 49,295,660 forces and 14,223,555 stresses.
+
+==Innovation==
+
+- The explicit inclusion of magnetic moments enables CHGNet to learn and accurately represent the orbital occupancy of electrons, enhancing its capability to describe both atomic and electronic degrees of freedom.
+
+
+
+
+
+
+
+
+
+**Ceder课题组最新提出了一种基于图神经网络机器学习原子势能（MLIP）的预训练通用原子力场：晶体哈密顿图神经网络（CHGNet）。**CHGNet预训练于Materials Project材料数据库中积累超过十年的第一性原理计算， 超过150万种无机晶体结构的密度泛函理论轨迹数据集。CHGNet使用磁矩信息正则化原子上的电荷自由度，从而能够学习并准确地表示电子的轨道占据，并且增强图神经网络对原子和电子自由度的描述。
+
+
+
+
+
+>为什么 magnetic moments
+>
+>![image-20231104001113179](./assets/magnetic.png)
+
+>磁矩是描述物体磁性强弱和方向的物理量。它是一个矢量，用来表示物体在磁场中的响应能力。磁矩可以是原子、分子、电子、离子或宏观物体的属性。 
+>
+>在原子和分子中，电子的自旋和轨道运动都会产生磁矩。电子的自旋磁矩与电子的自旋有关，而电子的轨道磁矩与电子的轨道运动有关。 电子的轨道占据是指电子在原子或分子中所占据的轨道。轨道占据可以用来描述电子在原子或分子中的分布。
+
+> 对称性约束和长程相互作用（invariant/equivariant symmetry constraints and long-range interaction）
+>
+> - 平移对称性：原子结构在平移方向上是平移对称的。这意味着，如果我们将原子结构沿着平移方向移动一个距离，那么原子结构的性质不会改变。  
+> - 旋转对称性：原子结构在旋转方向上是旋转对称的。这意味着，如果我们将原子结构沿着旋转轴旋转一个角度，那么原子结构的性质不会改变。  
+> - 镜像对称性：原子结构在镜像方向上是镜像对称的。这意味着，如果我们将原子结构沿着镜像面镜像，那么原子结构的性质不会改变。  
+> - 长程相互作用：原子结构中远距离的相互作用可以通过库仑相互作用、范德华相互作用和氢键相互作用来描述。 
+>
+> 对称性约束可以帮助我们理解原子结构的性质，而长程相互作用可以帮助我们理解原子结构的稳定性。
+
+
+
+
+
+
+
+
+
+
+
+## Section3: BoltzmannTransEquSolver
+
+First principles-phonon Boltzmann transport equation solver
+
+### 3.1. *GiftBTE: an efficient deterministic solver for non-gray phonon Boltzmann transport equation*
+
+> [GiftBTE: an efficient deterministic solver for non-gray phonon Boltzmann transport equation - IOPscience](https://iopscience.iop.org/article/10.1088/1361-648X/acfdea)
+
+GiftBTE employs numerical methods to solve **the phonon Boltzmann transport equation**, which accurately describes heat conduction and simulates submicron heat conduction. It takes phonon properties from first-principles simulations as input and provides a built-in database for some materials.
+
+### 1.1 Download
+
+The descriptive document about installation and running is on [Welcome to GiftBTE’s documentation! ](https://bte.sjtu.edu.cn/index.html) and [GiftBTE-developer/GiftBTE: An efficient deterministic solver for phonon BTE (github.com)](https://github.com/GiftBTE-developer/GiftBTE)
+
+### 1.2 Running
+
+There are three mandatory files in the **input folder**: CONTROL, PHONON and GEOMETRY.
+
+- **`CONTROL:`** configure the BTE solver to be used.
+
+- **`PHONON: `** provides the phonon properties
+
+- **`GEOMETRY: `** provides he phonon properties
+
+### 1.3 Content
+
+#### 1.3.1 Application
+
+- computation of thermal conductivity for nanostructures
+
+- prediction of temperature rise in transistors
+
+- simulation of laser heating processes
+
+#### 1.3.2 Origin
+
+- `Fourier's laws` is not applicable to the scale of micron/nanoscale thermal transport.
+
+- `non-gray BTE` means 
+
+
+
+
+
+
+
+
+
+## Section4. Lighting
+
+### 2.1 *Efficient and stable emission of warm-white light from lead-free halide double perovskites*
+
+> Title:  *Efficient and stable emission of warm-white light from lead-free halide double perovskites*
+>
+> Journal:  Nature	Impact Factor: 39.80	Published: July 03, 2023
 >
 > Lead Author：Jun Zhang( City University of Hong Kong )
 >
 > Key words:   AGAT (Atomic Graph Attention networks);	HEECs
 >
+> Artical adress:  [Efficient and stable emission of warm-white light from lead-free halide double perovskites | Nature](https://www.nature.com/articles/s41586-018-0691-0)
+>
+
+
+
+- **`Metal halide perovskites`** have outstanding emission properties, but the best-performing materials of this type contain lead and have unsatisfactory stability. 
+- We report **`a lead-free double perovskite`**, Cs2(Ag0.60Na0.40)InCl6 with 0.04 per cent bismuth doping, which exhibits efficient and stable white-light emission.
+
+- Broadband and white emission typically originate from **`self-­trapped excitons (STEs)`** that exist in semiconductors with localized carriers and a soft lattice. STE is a special type of exciton in which electrons and hole pairs are localized at specific locations in the lattice rather than moving freely through the material.
+
+- **`The PLQY`** is defined as the ratio of the radiative recombination rate (k-rad) to the sum of the radiative and non­radiative(k-non) recombination rates. Increasing k-rad and reducing k-non are two strategies to enhance the PLQY. The first and most critical step towards improving the PLQY is to break the parity forbidden transition by manipulating the symmetry of the STE wave function.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Section0: Graduation-CBFNet
+
+### 0.1 *Design high-entropy electrocatalyst via interpretable deep graph attention learning*
+
+> Title:  *D esign high-entropy electrocatalyst via interpretable deep graph attention learning*
+>
+> Journal:  Joule	Impact Factor:  39.80	Published:  July 03, 2023
+>
+> Lead Author:  Jun Zhang( City University of Hong Kong )
+>
+> Key words:  AGAT (Atomic Graph Attention networks);  HEECs
+>
 > Artical adress:  [Design high-entropy electrocatalyst via interpretable deep graph attention learning ](https://www.researchgate.net/publication/372090098_Design_high-entropy_electrocatalyst_via_interpretable_deep_graph_attention_learning)
 >
-> Code adress:   [jzhang-github/AGAT: Atomic Graph Attention networks](https://github.com/jzhang-github/AGAT)
-
-
+> Code adress:  [jzhang-github/AGAT: Atomic Graph Attention networks](https://github.com/jzhang-github/AGAT)
 
 ==Method== The Author developed *an accurate and efficent atomic graph attention network* (AGAT) to accelerate the desigh of the high performance HEECs (high-entropy electrocatalyst). Finally, we apply the well-trained AGAT model to explore the compositional space and predict the high-performance catalysts.
 
-==Content==
+==Content:== **There are two problems need to be solved for DFT.** First, abundant computational resources are needed to reveal the energy distribution of a single adsorbed intermediate on one surface because of the huge compositional space and abundant active sites on the surfaces. Second, new calculations should be performed for new elemental combinations, making the search for promising HEECs extremely expensive.
 
-- **There are two problems need to be solved for DFT.** First, abundant computational resources are needed to reveal the energy distribution of a single adsorbed intermediate on one surface because of the huge compositional space and abundant active sites on the surfaces. Second, new calculations should be performed for new elemental combinations, making the search for promising HEECs extremely expensive.
-- **There are no universal rules for selecting descriptors**, which strongly depends on domain knowledge for ML.
+But all these published models were constructed based on **the graph convolution schemem**, in which atoms aggregate information from all connected neighbors with the same importance. 
 
-- **The graph neural network** naturally considers symmetry invariance, e.g. , traslation, rotation, and permutation. Additionally, GNN-based models extra compositional features and crystal topology automatically, avoiding empirical-dependent feature engineering.
-- But all these published models were constructed based on **the graph convolution schemem**, in which atoms aggregate information from all connected neighbors with the same importance. 
+==Innovation:== **A perfect message-passing mechanism** should pay attention to connected atoms, other than distant atoms. The AGAT is **interpretable** as the trainable attention scores on graph edges govern the information passed through.
 
-==Innovation== 
+==perspective:== The AGAT is recommended strongly to apply for my project, with an accurate prediction of force and energy. In AGAT,  the graph nodes represent one-hot code of atoms as atomic feature and the graph edges store the distance with unit vector as bond properties.
 
-- **A perfect message-passing mechanism** should pay attention to connected atoms, other than distant atoms. The AGAT is **interpretable** as the trainable attention scores on graph edges govern the information passed through.
-
-==Question==
-
-- What is scaling relations and classical d-band theory: Although the reliability of scaling relations and classical d-band theory is confirmed on HEEC surfaces, we prove that HEEC can effectively bypass the scaling relations by providing ample versatile local environments. 
-- **We only focus on the network now.**
-
-==perspective==
-
-The AGAT is recommended strongly to apply for my project, with an accurate prediction of force and energy. In AGAT,  the graph nodes represent one-hot code of atoms as atomic feature and the graph edges store the distance with unit vector as bond properties.
-
-In code, `ExtractVaspFiles`
-
-![image-20231202115248028](https://s2.loli.net/2024/04/05/cqyuOfbI2M6VDWz.png)
-
-Note: In one AGAT Layer, we separate the nodes into source and destination nodes according to the message-passing direction.
-
-```shell
-find . -name OUTCAR > paths.log
-sed -i 's/OUTCAR$//g' paths.log
-sed -i "s#^.#${PWD}#g" paths.log
-
-awk '$1>1.00 {print}' force_test_pred_true.txt > force_break.txt
-ls -l ./|grep "^d"|wc -l
-```
+<img src="./assets/agat.png" alt="image-20231202115248028" style="zoom:50%;" />
 
 
 
+### 0.2 *Graph Attention Networks*
 
-
-
-
-
-
-### GAT (Graph Attention Network)
-
-> <Graph Attention Network>
+> Title:  Graph Attention Networks
 >
-> Journal：ArXiv	Published: 4th Feburary 2018
+> Journal:  ArXiv	Published:  4th Feburary 2018
 >
-> Lead Author：Petar Velickovic (Department of Computer Science and Technology University of Cambridge)
+> Lead Author:  Petar Velickovic (Department of Computer Science and Technology University of Cambridge)
 >
 > Key words:  GAT (Graph Attention networks)
 >
@@ -153,31 +340,27 @@ ls -l ./|grep "^d"|wc -l
 - A detailed introduction of the aforementationed approaches about Graph Networks: Recursive Neural Network ---> Graph Neural Network ---> gated recurrent units ---> convolutions on the graph
 - A better comprehension of attention mechanisms: one of the benefits is that it allow for dealing with variable sized inputs, focusing on the most relevant parts of the input to make decisions.
 
-![image-20231214123056198](https://s2.loli.net/2024/04/05/D4IOm7GBhjeCNSn.png)
+<img src="./assets/attention.png" alt="attention" style="zoom:50%;" />
 
 
 
+### 0.3 *BonDNet: a graph neural network for the prediction of bond dissociation energies for charged molecules*
 
-
-
-
-### BonDNet (bond dissociation energies)
-
-> <BonDNet: a graph neural network for the prediction of bond dissociation energies for charged molecules>
+> Title:  BonDNet: a graph neural network for the prediction of bond dissociation energies for charged molecules
 >
 > Journal:  Chemical Science	Impact Factor:  62.10	Accepted 3rd December 2020
 >
-> Lead Author：Mingjian Wen ( University of California)
+> Lead Author:  Mingjian Wen ( University of California)
 >
-> Key words:   the bond dissociation energy
+> Key words:  the bond dissociation energy
 >
 > Artical adress:  [BonDNet: a graph neural network for the prediction of bond dissociation energies for charged molecules - Chemical Science (RSC Publishing)](https://pubs.rsc.org/en/content/articlelanding/2021/SC/D0SC05251E)
 >
-> Code adress:   [mjwen/bondnet](https://github.com/mjwen/bondnet)
+> Code adress:  [mjwen/bondnet](https://github.com/mjwen/bondnet)
 
-==Content==
+==Content:== We propose a chemically inspired graph neural network machine learning model, BonDNet, for the rapid and accurate prediction of BDEs, capable of predicting both homolytic and heterolytic BDEs for molecules of any charge. 
 
-We propose a chemically inspired graph neural network machine learning model, BonDNet, for the rapid and accurate prediction of BDEs, capable of predicting both homolytic and heterolytic BDEs for molecules of any charge. 
+BonDNet maps the difference between the molecular representations of the reactants and products to the reaction BDE. Because of the use of this difference representation and the introduction of global features, including molecular charge.
 
 ==Innovation==
 
@@ -185,60 +368,15 @@ We propose a chemically inspired graph neural network machine learning model, Bo
 
 - Second, BonDNet takes the differences of the atom, bond, and global features between the products and the reactant to represent a bond dissociation reaction.
 
-==Harvest==
-
-- BonDNet maps the difference between the molecular representations of the reactants and products to the reaction BDE. Because of the use of this difference representation and the introduction of global features, including molecular charge.
-- **I have no idea how to describe the breaking bonds reaction** through the difference between the molecular representations of the reactants and products.
-
-![image-20231214134325988](https://s2.loli.net/2024/04/05/Q3hPAf4HV72euUJ.png)
 
 
+### 0.4 *Interatomic forces breaking carbon-carbon bonds*
 
-
-
-### ASNN (an Associative Neural Network)
-
-><A big data approach to the ultra-fast prediction of DFT-calculated bond energies>
+>Title:  *Interatomic forces breaking carbon-carbon bonds*
 >
->Journal：Journal of Cheminformatics	Published:  2013
+>Journal:  Acs Partner Journal	Published:  18 January 2021
 >
->Lead Author：Xiaohui Qu (Bristol Composites Institute)
->
->Key words:  interatomic force
->
->Artical adress:  [A big data approach to the ultra-fast prediction of DFT-calculated bond energies | Journal of Cheminformatics | Full Text (biomedcentral.com)](https://jcheminf.biomedcentral.com/articles/10.1186/1758-2946-5-34)
->
->dataset adress:  [Interatomic forces breaking carbon-carbon bonds - Datasets - data.bris](https://data.bris.ac.uk/data/dataset/1ycz4js3rgnzk2dxw07im4dat3)
-
-==Content==
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Breaking carbon-carbon bonds
-
-><Interatomic forces breaking carbon-carbon bonds>
->
->Journal：Acs Partner Journal	Published: 18 January 2021
->
->Lead Author：Mat Tolladay (Bristol Composites Institute)
+>Lead Author:  Mat Tolladay (Bristol Composites Institute)
 >
 >Key words:  interatomic force
 >
@@ -246,9 +384,7 @@ We propose a chemically inspired graph neural network machine learning model, Bo
 >
 >dataset adress:  [Interatomic forces breaking carbon-carbon bonds - Datasets - data.bris](https://data.bris.ac.uk/data/dataset/1ycz4js3rgnzk2dxw07im4dat3)
 
-==Content==
-
-We compare **computational methods for determining the force** between carbon atoms as a function of bond length, in order to establish which ones are capable of accurately simulating carbon-carbon bonds breaking due to applied mechanical strain in nanomaterials. 
+==Content:== We compare **computational methods for determining the force** between carbon atoms as a function of bond length, in order to establish which ones are capable of accurately simulating carbon-carbon bonds breaking due to applied mechanical strain in nanomaterials. 
 
 | Tight-binding | density-functional theory | molecular mechanics potentials | Møller-Plesset perturbation theory | complete-active-space self-consistent-field method |
 | ------------- | ------------------------- | ------------------------------ | ---------------------------------- | -------------------------------------------------- |
@@ -256,95 +392,19 @@ We compare **computational methods for determining the force** between carbon at
 ==Harvest==
 
 - We should take electronic behaviour into consideration for the carbon-carbon interatomic forces relevant to the determination of the mechanical strength of materials at atomic-length scales. 
-- Determining values for the peak stress experimentally is challenging, but has been achieved for polysaccharide molecules covalently bonded to a substrate, using an atomic force microscope tip to apply a measurable tensile force. As the description of `<How Strong Is a Covalent Bond?>`, the main difficulty is determining which bond breaks.
+- Determining values for the peak stress experimentally is challenging, but has been achieved for polysaccharide molecules covalently bonded to a substrate, using an atomic force microscope tip to apply a measurable tensile force. As the description of *How Strong Is a Covalent Bond*, the main difficulty is determining which bond breaks.
 
 
 
 
 
-### CHGNet
-
-><CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling>
->
->Journal：nature machine intelligence	Published: 14 September 2023
->
->Lead Author：Bowen Deng (Department of Materials Science and Engineering, University of California Berkeley)
->
->Key words:  machine-learning interatomic potential	magnetic moments	
->
->Artical adress:  [CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling](https://www.nature.com/articles/s42256-023-00716-3)
->
->Code adress:  [CederGroupHub/chgnet](https://github.com/CederGroupHub/chgnet)
-
-==Content==
-
-Large-scale simulations with complex electron interactions remain one of the greatest challenges for atomistic modelling. Although **classical force fields** often fail to describe the coupling between electronic states and ionic rearrangements, the more accurate **ab initio molecular dynamics** suffers from computational complexity that prevents long-time and large-scale simulations, which are essential to study technologically relevant phenomena. 
-
-Here we present **the Crystal Hamiltonian Graph Neural Network** (CHGNet), a graph neural network-based machine-learning interatomic potential (MLIP) that models the universal potential energy surface. 
-
-==Innovation==
-
-- The explicit inclusion of magnetic moments enables CHGNet to learn and accurately represent the orbital occupancy of electrons, enhancing its capability to describe both atomic and electronic degrees of freedom.
-
-==Harvest==
-
-- **How to add electronic information to my network?**
-
-![42256_2023_716_Fig1_HTML-1702534120554-3](https://s2.loli.net/2024/04/05/slJ1npKSOiAfeL6.png)
 
 
 
 
 
-利用成键的非简谐性研究键能和键长的关系，非简谐性指的是分子振动偏离简谐近似的情况，它对于描述化学键在受到扰动时的行为至关重要。
 
 
-
-
-
-- 找到峰值力对应的文件，提取能量；
-
-- 找到初始能量，作差
-
-- 查看键长
-
-
-
-
-
-## Section2: Deep Potential Molecular Dynamics
-
-### DeepMD-kit
-
-><DeepMD kit: A deep learning package for many-body potential energy representation and molecular dynamics>
->
->Journal：Computer Physics Communications	Published: 21 March 2018
->
->Lead Author：Han Wang (Institute ofApplied Physics and Computational Mathematics, Beijing 100094, PR China)
->
->Key words: The Deep Potential for Molecular Dynamics	Many-body potential energy
->
->Artical Adress:
->
->Docs:  [DeePMD-kit’s documentation — DeePMD-kit documentation (deepmodeling.com)](https://docs.deepmodeling.com/projects/deepmd/en/master/#)
-
-
-
-
-
-## Section3: Materials Design
-
-><Learning Matter: Materials Design with Machine Learning and Atomistic Simulations>
->
->Journal：Acs Partner Journal	Published: 4th Feburary 2018
->
->Lead Author：Petar Velickovic (Department of Computer Science and Technology University of Cambridge)
->
->Key words:
->
->Artical Adress:
->
->interpretation:
 
 
 
