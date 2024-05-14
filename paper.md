@@ -48,7 +48,7 @@ The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvi
 
 ==CONTENT:== Herein, we report **a ship-in-a-bottle architecture on carbon nanotube yarn (CNTY) based SCs**, in which transition metal hydroxide (TMH) nanoparticles (Ni(OH)2 or Co(OH)2) are confined in conducting nanoporous metal–organic frameworks (MOFs, Ni3(HITP)2) which anchor onto CNTY, involves the synergy of nanoconfinement and hydrogen bonding network to mutually support each phase toward improved electrochemical performance.
 
-
+- Yarn-shaped supercapacitors (SCs) functionalized with pseudocapacitive materials，especially long-term cycling stability, owing to the volumetric change during charging/discharging.
 
 
 
