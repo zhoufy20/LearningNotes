@@ -56,8 +56,6 @@ The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvi
 
 
 
-
-
 -----
 
 ## Section2: Deep Potential
