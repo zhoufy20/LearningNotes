@@ -1,129 +1,6 @@
-![image-20240422091448779](./assets/image-20240422091448779.png)
+# *1. Vasp manual*
 
-
-
-[共价键](https://zhidao.baidu.com/search?word=共价键&fr=iknow_pc_qb_highlight)从不同的角度可以进行不同的分类，每一种分类都包括了所有的共价键（只是分类角度不同）。
-
-
-
-**按成键方式**
-
-[共价键_百度百科 (baidu.com)](https://baike.baidu.com/item/共价键/549226)
-
-σ键
-
-由两个[原子轨道](https://zhidao.baidu.com/search?word=原子轨道&fr=iknow_pc_qb_highlight)沿轨道[对称轴](https://zhidao.baidu.com/search?word=对称轴&fr=iknow_pc_qb_highlight)方向相互重叠导致电子在核间出现概率增大而形成的共价键，叫做σ键，可以简记为“头碰头”。σ键属于定域键，它可以是一般共价键，也可以是配位共价键。一般的单键都是σ键。原子轨道发生杂化后形成的共价键也是σ键。由于σ键是沿轨道对称轴方向形成的，轨道间重叠程度大，所以，通常σ键的键能比较大，不易断裂，而且，由于有效重叠只有一次，所以两个原子间至多只能形成一条σ键。
-
-π键
-
-成键原子的未杂化p轨道，通过平行、侧面重叠而形成的共价键，叫做π键，可简记为“肩并肩”。π键与σ键不同，它的成键轨道必须是未成对的p轨道。π键性质各异，有两中心，两电子的定域键，也可以是共轭Π键和反馈Π键。两个原子间可以形成最多2条π键，例如，[碳碳双键](https://zhidao.baidu.com/search?word=碳碳双键&fr=iknow_pc_qb_highlight)中，存在一条σ键，一条π键，而碳碳三键中，存在一条σ键，两条π键。
-
-δ键
-
-由两个d轨道四重交盖而形成的共价键称为δ键，可简记为“面对面”。δ键只有两个节面（[电子云](https://zhidao.baidu.com/search?word=电子云&fr=iknow_pc_qb_highlight)密度为零的平面）。从键轴看去，δ键的轨道对称性与d轨道的没有区别，而[希腊字母](https://zhidao.baidu.com/search?word=希腊字母&fr=iknow_pc_qb_highlight)δ也正来源于d轨道。
-
-
-
-
-
-在VASP中，常常计算Bader电荷来得到原子周围的电子数，从而近似得到原子的化合价。Bader电荷分析是理查德·贝德（RichardBader）开发的一种将分子分解为原子的直观方法。Bader电荷分析对原子的定义纯粹是基于电子电荷密度。Bader使用所谓的零磁通表面来划分原子。零通量表面是2D表面，其上电荷密度垂直于表面。
-
-通常在分子系统中，电荷密度在原子之间达到最小值，这是将原子彼此分开的自然位置。除了作为分子中原子可视化的直观方案外，Bader的定义通常也可用于电荷分析。例如，Bader体积内的电荷与原子的总电子电荷很接近。电荷分布可用于确定相互作用的原子或分子的多极矩。Bader的分析也被用来定义原子的硬度，可以用来量化从原子中去除电荷的成本。
-
-
-
-考虑的分子有
-
-
-
-
-
-
-
-## 2. Electron transfer in a chemical process
-
-### 2.1 Difference charge density
-
-**The differential charge density** is the difference in the charge density distribution obtained by subtracting the charge density before the operation from the charge density after the operation such as adsorption or substitution of a system.
-
-
-
-
-
-
-
-
-
-
-
-### 2.2 Bader Charge
-
->http://theory.cm.utexas.edu/henkelman/code/bader/
->
->http://theory.cm.utexas.edu/vtsttools/
->
->[VASP从入门到入土：Bader电荷的计算 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/673557738)
-
-#### 2.2.1 Introduction
-
-[Richard Bader](http://www.chemistry.mcmaster.ca/bader/), from McMaster University, developed an intuitive way of dividing molecules into atoms. His definition of an atom is based purely on the electronic charge density. Bader uses what are called **zero flux surfaces** to divide atoms. A zero flux surface is a 2-D surface on which the charge density is a minimum perpendicular to the surface. Typically in molecular systems, the charge density reaches a minimum between atoms and this is a natural place to separate atoms from each other.
-
-#### 2.2.2 Output files
-
-The following output files are generated: `ACF.dat`, `BCF.dat`, `AtomVolumes.dat`.
-
-- `ACF.dat` contains the coordinates of each atom, the charge associated with it according to Bader partitioning, percentage of the whole according to Bader partitioning and the minimum distance to the surface. This distance should be compared to maximum cut-off radius for the core region if pseudo potentials have been used.
-
-- `BCF.dat` contains the coordinates of each Bader maxima, the charge within that volume, the nearest atom and the distance to that atom.
-
-- `AtomVolumes.dat` contains the number of each volume that has been assigned to each atom. These numbers correspond to the number of the BvAtxxxx.dat files.
-
-#### 2.2.3 Note for VASP users
-
-One major issue with the charge density (CHGCAR) files from the VASP code is that they only contain the valance charge density. The Bader analysis assumes that charge density maxima are located at atomic centers (or at pseudoatoms). Aggressive pseudopotentials remove charge from atomic centers where it is both expensive to calculate and irrelevant for the important bonding properties of atoms.
-
-1. VASP contains a module (aedens) which allows for the core charge to be written out from PAW calculations. By adding the LAECHG=.TRUE. to the INCAR file, the core charge is written to AECCAR0 and the valance charge to AECCAR2. 
-
-```bash
-# the INCAR file
-Global Parameters
-ISTART = 1 # read the WAVECAR file
-ICHARG = 1 # Read the charge density from CHGCAR file
-
-LAECHG =.TRUE. #the all-electron charge density will be reconstructed explicitly and written to files.
-LCHARG = .TRUE. # determines whether the charge densities (files CHGCAR and CHG) are written.
-NSW    = 0 # sets the maximum number of ionic steps
-IBRION = -1 # The ions are not moved, but NSW outer loops are performed.
-```
-
-2. These two charge density files can be summed using the [chgsum.pl](http://theory.cm.utexas.edu/vtsttools/scripts.html) script, and the total charge will be written to CHGCAR_sum.
-
-```bash
-chgsum.pl AECCAR0 AECCAR2
-```
-
-3. The bader analysis can then be done on this total charge density file:
-
-```bash
-bader CHGCAR -ref CHGCAR_sum
-```
-
-4. One finally note is that you need a fine fft grid to accurately reproduce the correct total core charge. It is essential to do a few calculations, increasing NG(X,Y,Z)F until the total charge is correct.
-
-   The number of electrons printed in the `ACF.dat` must be an integer! This is very important.
-
-```bash
-grep ZVAL POTCAR
-grep NGX OUTCAR
-```
-
-
-
-
-
-## 3. Vasp manual
-
-# VASP 相关教程
+## *1.1. 参考资料*
 
 > [VASP软件 INCAR文件参数含义速查表 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/151725218)
 >
@@ -147,39 +24,20 @@ Rubbish in，Rubbish out! 程序只负责算，对错由你决定！错误主要
 
 
 
-## 1. 文件解读
+## *1.2. 文件解读*
 
-### 1.1 输入文件
-
-#### 1.1.1 INCAR 文件
-
-
-
-#### 1.1.2 KPOINTS 文件
-
-
-
-#### 1.1.3 POSCAR 文件
-
-通过VESTA建模得到，包括体系名称，晶胞基矢信息，原子元素种类、数量和具体坐标
-
-
-
-#### 1.1.4 POTCAR 文件
-
-POTCAR 从赝势库中得到的赝势信息，一般不需要进行操作
-
-
-
-
-
-### 1.2 输出文件
-
-#### 1.2.1 CONTCAR
+### *1.2.1. 输入文件*
 
 在VASP的输入文件中，我们用 POSCAR 来存储模型的结构信息。当我们使用 VASP 优化完成之后，就会得到一个新的结构，而 CONTCAR 就是用来存储新结构的文件。
 
+- INCAR 
+- KPOINTS 
+- POSCAR：通过VESTA建模得到，包括体系名称，晶胞基矢信息，原子元素种类、数量和具体坐标
+- POTCAR：从赝势库中得到的赝势信息，一般不需要进行操作
 
+
+
+### *1.2.2. 输出文件*
 
 VASP 的输出文件主要有 OUTCAR, CHG, CHGCAR, WAVECAR, DOSCAR, EIGENVAL,  OSZICAR, CONTCAR, PCDAT, IBZKPT, XDATCAR。
 
@@ -187,13 +45,9 @@ VASP 的输出文件主要有 OUTCAR, CHG, CHGCAR, WAVECAR, DOSCAR, EIGENVAL,  O
 
 
 
+### *1.2.3. 文件示例*
 
-
-
-
-### 1.3 脚本解释
-
-#### 1.3.1 INCAR
+- **INCAR**
 
 ```shell
 Global Parameters
@@ -247,7 +101,7 @@ NCORE  =  4
 
 
 
-#### 1.3.2 POSCAR
+- **POSCAR**
 
 ```shell
 C-C\(2)     			  # 表示这是一个碳原子之间的键长                           
@@ -286,7 +140,7 @@ Direct 				# 分数坐标系，此外 Cartesian 代表笛卡尔坐标
 
 
 
-#### 1.3.3 POTCAR
+- **POTCAR**
 
 ```shell
 PAW_PBE C 08Apr2002					# 用于描述碳原子的PAW（投影缀加平面波）参数的文件         
@@ -318,7 +172,7 @@ RDEPT  =    1.300    core radius for aug-charge		# 增强电荷的核心半径�
 
 
 
-#### 1.3.4 KPOINTS
+- **KPOINTS**
 
 ```shell
 # 用于生成K-Mesh 的 K-间距值的说明
@@ -338,7 +192,7 @@ Gamma
 
 
 
-## 2.1 ENCUT
+- **ENCUT**
 
 平面波的切断动能。采用默认值还是手动的输入。推荐的做法是**采用后者**，在任何性质的计算之前，进行 ENCUT 收敛情况的计算，由此来确定一个合适的切断动能值，然后手动地设置。
 
@@ -368,21 +222,7 @@ done
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## 3. VASP 的迭代计算过程
+## *1.3. VASP 的迭代计算过程*
 
 > 首先，计算体系对电子密度进行初猜；
 >
@@ -392,7 +232,7 @@ done
 >
 > 最后，当前后两者之差达到我们预设的收敛标准时，计算收敛结束。
 
-### 3.1 VASP计算的收敛标准由参数 EDIFF & EDIFFG 决定:
+### *1.3.1. VASP计算的收敛标准由参数 EDIFF & EDIFFG 决定:*
 
 **（1）EDIFF：**控制电子步收敛（前后能量差值），默认EDIFF=1E-4，建议1E-5即可。
 
@@ -400,13 +240,13 @@ done
 
 力作为收敛标准，此时EDIFFG为负值。一般取-0.01到-0.05之间；<br>能量作为收敛标准，此时EDIFFG为正值。一般取0.0001到0.001即可。
 
-### 3.2 VASP中控制优化步数的参数 NELM & NSW： 
+### *1.3.2. VASP中控制优化步数的参数 NELM & NSW：* 
 
 **（1）NELM：**控制每一离子步中电子步数的最大值。
 
 **（2）NSW：**控制几何优化的步数；NSW = 0：不进行结构优化；NSW = N>0：进行结构优化 。
 
-### 3.3 控制结构优化的参数 IBRION
+### *1.3.3 控制结构优化的参数 IBRION*
 
 **（1）IBRION：决定原子如何移动或弛豫**
 
@@ -429,22 +269,93 @@ done
 
 
 
-**注意：**计算一个体系，我们有`2`个优化过程
+**注意：**计算一个体系，我们有2个优化过程
 
 - 电子结构的优化： 可以理解为对某一固定的几何结构，迭代求解薛定谔方程来获得体系能量极小值的一个过程。这个迭代过程，每一次迭代求解都可以认为是电子结构的一个优化。（通常被大伙称为：电子步）
 - 几何结构的优化：可以理解为在电子结构优化的结果上，获取原子的受力情况，然后根据受力情况，调节原子的位置，再进行电子结构优化，获取新的受力情况，然后再调节原子位置，一直重复这样的过程，直至找到体系势能面上一个极小值的过程。（通常被大伙称为：离子步）
 
 
 
+## *1.4. VASP加速计算方案总结*
+
+- 选择较好的计算资源，VASP计算对硬件的要求相对较高，合理选择计算资源是加速计算的第一步。对于不同规模的体系，选择合适的CPU/GPU核数和内存大小至关重要。通常情况下，对于小体系的计算（通常为几到几十个原子的体系），使用单节点适当的核数就足够了，跨界点多核反而会因为节点间通信而降低计算效率；而对于大体系（通常为一百个左右到几百个原子的体系），则需要多节点并行计算，确保足够的内存和并行效率。
+
+- 优化并行设置VASP的并行效率在很大程度上取决于K点的划分和平面波基组的分布。合理设置KPAR和NCORE参数可以显著加快计算速度。调整KPAR值：使得K点的并行数目最优。 设置NCORE或NPAR：合理分配每个核心负责的平面波数目。如下笔者计算120多个原子的合金体系，服务器有56个核，不加`NCORE=7`,`NPAR=8`,`LREAL=Auto`和加了这三项后电子步弛豫速度可以相差10倍以上。因此，在大体系计算时，为了提升计算效率，在几何优化中强烈推荐使用该组参数。
+- 调整计算精度VASP中的ENCUT（波函数截断动能）和EDIFF（电子步优化精度）参数直接影响计算的精度和效率。在保证结果可靠性的前提下，适当降低这些参数可以减少计算时间。合理选择ENCUT：通常设为体系中最硬元素的建议值(组合赝势中ENMAX最大值)的1.3倍。适度设置EDIFF：对于中间过程的计算(如体系的几何优化)，可以适当放宽收敛标准。
+- 利用预处理技巧VASP计算中，合理的初始猜测可以加快收敛速度。例如，使用合适的初始磁矩或者从粗略计算体系结果中转移波函数作为初猜设置。设置良好的初始磁矩，特别是对于磁性材料如：波函数预处理：使用ISTART=1导入粗略计算的波函数。初猜磁矩设置示例：[**DFT磁性的计算(本例为用VASP计算FCC Ni的磁矩)**](http://mp.weixin.qq.com/s?__biz=MzU0Mzk2MjIzNQ==&mid=2247485964&idx=1&sn=aca485a36334cfcec32875b07d5d3bda&chksm=fb022f18cc75a60e2242bf30b52246f822bffd52c2896cd59f7168625f22189200b21695b671&scene=21#wechat_redirect)
+- 启用一些电子结构优化算法。比如，对于电子步迭代困难的大体系，RMM-DIIS （ALGO = Fast）（残矢最小化直接逆迭代子空间优化方法）可能比简单的迭代方法（ALGO = Normal）更有效。
+- 避免不必要的计算某些计算步骤可能并不是每次都需要执行。例如，大体系几何优化或第一性分子动力学计算可以不用输出电荷密度和波函数，这样可以使得计算效率提升。
 
 
 
+## *1.5. Electron transfer in a chemical process*
+
+### *1.5.1 Difference charge density*
+
+**The differential charge density** is the difference in the charge density distribution obtained by subtracting the charge density before the operation from the charge density after the operation such as adsorption or substitution of a system.
 
 
 
+### *1.5.2 Bader Charge*
 
+>http://theory.cm.utexas.edu/henkelman/code/bader/
+>
+>http://theory.cm.utexas.edu/vtsttools/
+>
+>[VASP从入门到入土：Bader电荷的计算 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/673557738)
 
+#### *1.5.2.1. Introduction*
 
+[Richard Bader](http://www.chemistry.mcmaster.ca/bader/), from McMaster University, developed an intuitive way of dividing molecules into atoms. His definition of an atom is based purely on the electronic charge density. Bader uses what are called **zero flux surfaces** to divide atoms. A zero flux surface is a 2-D surface on which the charge density is a minimum perpendicular to the surface. Typically in molecular systems, the charge density reaches a minimum between atoms and this is a natural place to separate atoms from each other.
+
+#### *1.5.2.2. Output files*
+
+The following output files are generated: `ACF.dat`, `BCF.dat`, `AtomVolumes.dat`.
+
+- `ACF.dat` contains the coordinates of each atom, the charge associated with it according to Bader partitioning, percentage of the whole according to Bader partitioning and the minimum distance to the surface. This distance should be compared to maximum cut-off radius for the core region if pseudo potentials have been used.
+
+- `BCF.dat` contains the coordinates of each Bader maxima, the charge within that volume, the nearest atom and the distance to that atom.
+
+- `AtomVolumes.dat` contains the number of each volume that has been assigned to each atom. These numbers correspond to the number of the BvAtxxxx.dat files.
+
+#### *1.5.2.3 Note for VASP users*
+
+One major issue with the charge density (CHGCAR) files from the VASP code is that they only contain the valance charge density. The Bader analysis assumes that charge density maxima are located at atomic centers (or at pseudoatoms). Aggressive pseudopotentials remove charge from atomic centers where it is both expensive to calculate and irrelevant for the important bonding properties of atoms.
+
+1. VASP contains a module (aedens) which allows for the core charge to be written out from PAW calculations. By adding the LAECHG=.TRUE. to the INCAR file, the core charge is written to AECCAR0 and the valance charge to AECCAR2. 
+
+```bash
+# the INCAR file
+Global Parameters
+ISTART = 1 # read the WAVECAR file
+ICHARG = 1 # Read the charge density from CHGCAR file
+
+LAECHG =.TRUE. #the all-electron charge density will be reconstructed explicitly and written to files.
+LCHARG = .TRUE. # determines whether the charge densities (files CHGCAR and CHG) are written.
+NSW    = 0 # sets the maximum number of ionic steps
+IBRION = -1 # The ions are not moved, but NSW outer loops are performed.
+```
+
+2. These two charge density files can be summed using the [chgsum.pl](http://theory.cm.utexas.edu/vtsttools/scripts.html) script, and the total charge will be written to CHGCAR_sum.
+
+```bash
+chgsum.pl AECCAR0 AECCAR2
+```
+
+3. The bader analysis can then be done on this total charge density file:
+
+```bash
+bader CHGCAR -ref CHGCAR_sum
+```
+
+4. One finally note is that you need a fine fft grid to accurately reproduce the correct total core charge. It is essential to do a few calculations, increasing NG(X,Y,Z)F until the total charge is correct.
+
+   The number of electrons printed in the `ACF.dat` must be an integer! This is very important.
+
+```bash
+grep ZVAL POTCAR
+grep NGX OUTCAR
+```
 
 
 
