@@ -181,7 +181,7 @@ The Materials Project Database contains a vast collection of DFT calculations on
 
 
 
-
+--------------
 
 ## Section3: BoltzmannTransEquSolver
 
@@ -229,7 +229,7 @@ There are three mandatory files in the **input folder**: CONTROL, PHONON and GEO
 
 
 
-
+-------------
 
 ## Section4. Lighting
 
@@ -263,6 +263,29 @@ There are three mandatory files in the **input folder**: CONTROL, PHONON and GEO
 
 
 
+----------------------
+
+## Section5: 
+
+### *5.1 Suppressed thermal transport in silicon nanoribbons by inhomogeneous strain*
+
+> Title:  *Suppressed thermal transport in silicon nanoribbons by inhomogeneous strain*
+>
+> Journal:  Nature	Impact Factor:  	Published:  April 05, 2024
+>
+> Lead Author:  Lin Yang( Department of Advanced Manufacturing and Robotics, College of Engineering, Peking University, Beijing, People’s Republic of China. )
+>
+> Key words:  AGAT (Atomic Graph Attention networks);  HEECs
+>
+> Artical adress:  https://doi.org/10.1038/s41586-024-07390-4
+>
+
+==CONTENT:== Here we address this gap **by introducing inhomogeneous strain** through bending individual silicon nanoribbons on a custom-fabricated microdevice and measuring its effect on thermal transport while characterizing the strain-dependent vibrational spectra with sub-nanometre resolution. 
+
+- While uniform strains are known to elicit limited effects on heat flow, the impact of inhomogeneous strains
+  has remained elusive owing to the coexistence of interfaces and defects.
+
+- 
 
 
 
@@ -274,24 +297,13 @@ There are three mandatory files in the **input folder**: CONTROL, PHONON and GEO
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+----------------
 
 ## Section0: Graduation-CBFNet
 
 ### 0.1 *Design high-entropy electrocatalyst via interpretable deep graph attention learning*
 
-> Title:  *D esign high-entropy electrocatalyst via interpretable deep graph attention learning*
+> Title:  *Design high-entropy electrocatalyst via interpretable deep graph attention learning*
 >
 > Journal:  Joule	Impact Factor:  39.80	Published:  July 03, 2023
 >
