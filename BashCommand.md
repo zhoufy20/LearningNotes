@@ -124,7 +124,7 @@ conda uninstall package_name
 ### conda pack 环境打包
 conda install -c conda-forge conda-pack
 conda pack -n 虚拟环境名称 -o output.tar.gz
-tar -xzvf output.tar.gz
+tar -xzvf output.tar.gz -C xxx/miniconda/envs/xxx
 
 # pip install(ERROR: Could not install packages due to an OSError:)
 pip install pymysql -i https://pypi.tuna.tsinghua.edu.cn/simple
