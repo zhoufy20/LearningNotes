@@ -51,7 +51,8 @@ ctrl+a+d
 screen -r <15659.test>
 # 使用删除命令：
 screen -X -S <16283.you> quit
-
+# 显示深度为3级，只显示目录
+tree -d -L 3
 
 # nohup 实现命令后台运行并输出或记录到指定日志文件
 # nohup 是不挂断的意思(no hang up)
