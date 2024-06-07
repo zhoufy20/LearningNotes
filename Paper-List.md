@@ -12,7 +12,7 @@
 
 ## Section1: Osmotic energy generation
 
-## 1.1 aramid nanofiber (ANF) semiconductor-based membranes
+### 1.1 aramid nanofiber (ANF) semiconductor-based membranes
 
 ### *1.1.1. Light-enhanced osmotic energy generation with an aramid nanofiber membrane*
 
@@ -62,7 +62,7 @@ The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvi
 
 > [Development of Deep Potential (DP) series of methods on zhihu](https://zhuanlan.zhihu.com/p/348284750)
 
-**The core of the DP methods** is the Deep Potential model for representing the potential energy surfaces of atomic/molecular systems and the DP Generator (DP-GEN) strategy  for generating optimal data sets and reliable DP models.Recently, the extreme combination of DP methods and high-performance computing allowed us to simulate systems of hundreds of millions of atoms with first-principles precision for the first time. **There are three main problems to be solved:** faster and more accurate calculation of electronic structure; Faster and more accurate molecular dynamics simulation; Faster configuration sampling and more accurate free energy calculation.
+**The core of the DP methods** is the Deep Potential model for representing the potential energy surfaces of atomic/molecular systems and the DP Generator (DP-GEN) strategy  for generating optimal data sets and reliable DP models. Recently, the extreme combination of DP methods and high-performance computing allowed us to simulate systems of hundreds of millions of atoms with first-principles precision for the first time. **There are three main problems to be solved:** faster and more accurate calculation of electronic structure; Faster and more accurate molecular dynamics simulation; Faster configuration sampling and more accurate free energy calculation.
 
 ### 2.1 *DeePMD-kit: A deep learning package for many-body potential energy representation and molecular dynamics*
 
@@ -106,7 +106,37 @@ The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvi
 
 
 
-### 2.3 BPNN and DPNN
+
+
+### *2.1. and 2.2. DeePMD-Kit Code*
+
+DeePMD-kit: A deep learning package for many-body potential energy representation and molecular dynamics. DeePMD-kit takes a **system** as the data structure. A snapshot of a system is called a **frame**. A system may contain multiple frames with the same atom types and numbers, i.e. the same formula (like `H2O`). 
+
+
+
+One can use a convenient tool [`dpdata`](https://github.com/deepmodeling/dpdata) to convert data directly from the output of first principle packages to the DeePMD-kit format.
+
+```python
+dp train input.json
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### ? BPNN and DPNN
 
 >  The Behler-Parrinello neural network (BPNN) and the deep tensor neural network (DTNN).
 
@@ -114,7 +144,7 @@ BPNN uses the so-called symmetry functions as input and a standard neural networ
 
 
 
-### 2.3 *CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling*
+### 2.4 *CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling*
 
 > <CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling>
 >
@@ -172,6 +202,40 @@ The Materials Project Database contains a vast collection of DFT calculations on
 > - 长程相互作用：原子结构中远距离的相互作用可以通过库仑相互作用、范德华相互作用和氢键相互作用来描述。 
 >
 > 对称性约束可以帮助我们理解原子结构的性质，而长程相互作用可以帮助我们理解原子结构的稳定性。
+
+
+
+
+
+
+
+### *2.4 DMFF: An Open-Source Automatic Differentiable Platform for Molecular Force Field Development and Molecular Dynamics Simulation*
+
+> Title:  *An Open-Source Automatic Differentiable Platform for Molecular Force Field Development and Molecular Dynamics Simulation*
+>
+> Journal:  American Chemical Society	Impact Factor: 	Published: December 20, 2023
+>
+> Lead Author:  Xinyan Wang( Tsinghua-Berkeley Shenzhen Institute )
+>
+> Key words:  force fields
+>
+> Artical adress:  [DMFF: An Open-Source Automatic Differentiable Platform for Molecular Force Field Development and Molecular Dynamics Simulation | Journal of Chemical Theory and Computation (acs.org)](https://pubs.acs.org/doi/10.1021/acs.jctc.2c01297)
+
+
+
+### *2.5. PhyNEO: A Neural-Network-Enhanced Physics-Driven Force Field Development Workflow for Bulk Organic Molecule and Polymer Simulations*
+
+> Title:  *PhyNEO: A Neural-Network-Enhanced Physics-Driven Force Field Development Workflow for Bulk Organic Molecule and Polymer Simulations*
+>
+> Journal:  American Chemical Society	Impact Factor: 	Published: December 20, 2023
+>
+> Lead Author：Junmin Chen(   )
+>
+> Key words:  force fields
+>
+> Artical adress:  [PhyNEO: A Neural-Network-Enhanced Physics-Driven Force Field Development Workflow for Bulk Organic Molecule and Polymer Simulations | Journal of Chemical Theory and Computation (acs.org)](https://pubs.acs.org/doi/10.1021/acs.jctc.3c01045?ref=pdf)
+
+An accurate, generalizable, and transferable force field plays a crucial role in the molecular dynamics simulations of organic polymers and biomolecules. Conventional empirical force fields often fail to capture precise intermolecular interactions due to their negligence of important physics, such as polarization, charge penetration, many-body dispersion, etc. Moreover, the parameterization of these force fields relies heavily on top-down fittings, limiting their transferability to new systems where the experimental data are often unavailable. To address these challenges, we introduce a general and fully ab initio force field construction strategy, named ==PhyNEO==. 
 
 
 

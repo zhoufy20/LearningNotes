@@ -371,6 +371,73 @@ LAMMPS是 Large-scale Atomic/Molecular Massively Parallel Simulator，是Steve P
 
 
 
+# *3. Toolkits for VASP* 
+
+## *3.1. Vaspkit*
+
+
+
+## *3.2. qvasp* 
+
+https://sourceforge.net/projects/qvasp/files/latest/download
+
+qvasp is a material high-throughput design software based on the VASP package, which mainly includes two functions:
+
+1. Realizing high-throughput screening of materials, qvasp program not only can realize high-throughput material structure model constructing, but also provide high-throughput raw data postprocessing toolkits.
+2. Assisting users to easily generate input files and process output files, realizing rapid conversion between graphics and code, and improving work efficiency.
+
+
+
+
+
+
+
+# *3. 第一性原理*
+
+Solve quantum mechanic Schrodinger equation to  obtain Eigen value and Eigen function, and thus  the electronic structure. The charm is only atomic number and crystal structure  as input, which can determine precisely the structure  and the properties of the real materials.
+
+
+
+
+
+
+
+
+
+
+
+# *4. 分子动力学*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
