@@ -173,9 +173,10 @@ cudnn.is_acceptable(a.cuda()) # 若正常返回True
 [The use of .gitignore of zhihu](https://zhuanlan.zhihu.com/p/52885189)
 
 ```bash
-git config --global user.name "zhoufy20"
-git config --global user.email "zhoufy20@lzu.edu.cn"
-ssh-keygen -t rsa -C "zhoufy20@lzu.edu.cn"
+git config --global user.name "zhoufy.xjtu@gmail.cn"
+git config --global user.email "zhoufy.xjtu@gmail.cn"
+ssh-keygen -t rsa -C "zhoufy.xjtu@gmail.cn"
+ssh-keygen -t rsa -b 4096 -C "zhoufy.xjtu@gmail.cn""
 ssh -T git@github.com
 
 git status --ignored  #查看状态，包括忽略的文件
