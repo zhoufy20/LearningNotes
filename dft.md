@@ -258,7 +258,8 @@ VASP中控制优化步数的参数 NELM & NSW：
 
 - **IBRION = 1：**采用**准牛顿算法**来优化原子的位置；
 - **IBRION = 2：**采用**共轭梯度算法**来优化原子的位置；
-- **IBRION = 3：**采用**最速下降算法**来优化原子的位置。
+- **IBRION = 3：**采用**最速下降算法**来优化原子的位置；
+- **IBRION = 8：**采用**密度泛函微扰法**来计算声子谱。
 
 **（2）IBRION=2时的计算步骤：**
 
@@ -292,15 +293,237 @@ VASP中控制优化步数的参数 NELM & NSW：
 
 
 
-## *1.5. Electron transfer in a chemical process*
+# *2. Lammps manual*
 
-### *1.5.1 Difference charge density*
+LAMMPS是 Large-scale Atomic/Molecular Massively Parallel Simulator，是Steve Plimpton为主要作者开发一款开源的分子动力学模拟软件。LAMMPS可以模拟固态（金属，非金属，半导体等），液态（水，溶液），软物质（高分子，DNA，蛋白质），粗粒化物质。
+
+
+
+
+
+
+
+
+
+# *3. 第一性原理*
+
+Solve quantum mechanic Schrodinger equation to  obtain Eigen value and Eigen function, and thus  the electronic structure. The charm is only atomic number and crystal structure  as input, which can determine precisely the structure  and the properties of the real materials.
+
+
+
+
+
+
+
+
+
+
+
+# *4.  Molecular Dynamics Simulation*
+
+## *4.1. 模拟计算的一般步骤*
+
+> [理论计算之分子动力学模拟：算什么+应用实例 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/644841606)
+
+在分子动力学( Molecular Dynamics Simulation, MD）计算中，物质被看作是由原子构成的基本单元，通过模拟这些基本单元在时间上的演化，就可以探究物质的动力学性质，从而帮助人们更好地理解和预测物质的行为和性质。
+
+分子动力学模拟是一种基于牛顿运动定律的分子模拟方法，用于计算分子体系与时间相关的性质。**MD模拟可以依据当前分子体系的位置、速度和动能等信息，推测该体系未来的位置、速度和动能，从而揭示分子运动的客观规律。**与单点能和分子构型优化不同，MD模拟需要考虑热运动，分子可包含足够的热能来穿越势垒。根据分子体系中各粒子（包括分子、原子、离子等）运动的统计分析，可推测体系的**各种性质，如可能的构型、热力学参数、分子在溶液中的扩散和行为，各种平衡态性质等。**
+
+要模拟分子动力学，切入点非常直接，表示出**体系的势能面（Potential Energy Surface, PES）**。它描述了分子体系中原子间相互作用的能量随着原子坐标变化的关系。势能面不是我们通常理解的三维空间中的面，而是在反应坐标系中的一个概念，它可以是一维的曲线、二维的面或者更高维度的超面（hypersurface）。
+
+在化学反应中，势能面可以展现反应物、产物、中间体和过渡态的能量变化。通过势能面的分析，我们可以确定化学反应的路径，包括反应物如何通过特定的过渡态转化为产物。这个反应路径通常被称为最小能量路径（Minimum Energy Path, MEP），它是连接反应物和产物的势能最低的路径。
+
+分子动力学的基本任务就是获取物体在任意时刻组成原子的所有位置和动量，然后利用统计力学知识理解物体的性质和行为。它通过对分子间相互作用势函数及运动方程的求解，分析其分子运动的行为规律，模拟体系的动力学演化过程。**模拟计算的一般步骤包含以下几点：**
+
+A. 分子体系模型建立和优化
+
+B. 给定条件参数（温度、粒子数、时间等）
+
+C. 计算作用于所有粒子上的力
+
+D. 求解牛顿方程，计算极短时间内粒子的新位置
+
+E. 计算粒子新的速度和加速度
+
+F. 重复C-E直至体系达到平衡，然后记录原子的坐标位置。
+
+G. 继续计算直到取得足够的信息，分析体系各粒子运动轨迹，得到体系的统计性质。
+
+---
+
+**分子动力学模拟、第一性原理和量子化学之间确实存在一定的区别和联系。**
+
+**首先，分子动力学模拟是基于牛顿力学研究分子体系的一种分子模拟方法**。而第一性原理是基于量子力学研究周期性体系（比如晶体、界面等）的一类计算方法。目前，第一性原理计算主要参照密度泛函理论（DFT），即将电子看作是在原子核周围运动的独立粒子，并通过构建电子密度函数来描述电子在给定状态下的能量和动量。量子化学则是基于量子力学研究独立的化学体系（单个分子、独立团簇）的性质（构型、键能、尺寸、静电势等），目前量子化学计算也大量参照DFT理论。
+
+那么，它们之间又有什么联系呢？我们知道**MD模拟是基于势能的**，而势能可以简单地看作两体势、三体势、[四体势](https://zhida.zhihu.com/search?q=四体势&zhida_source=entity&is_preview=1)、范德华作用及静电作用等。这些参数除了可以通过实验获得，还可以从量子力学的角度出发采用第一性原理计算获得。看到这里，你是否豁然开朗？其实，**将量子力学和分子动力学模拟结合，用以分析原子尺度上更宏伟为和更复杂的物理过程，**已逐步发展成一门新的学科，即量子力学分子动力学模拟。
+
+----
+
+
+
+## *4.2. MD模拟的应用范围* 
+
+**MD模拟的应用范围**非常广泛，从复杂的材料科学问题，到生物大分子的结构和功能研究，再到化学反应动力学的研究，MD模拟都能够提供有价值的信息。
+
+**药物设计：**预测化合物的性质，如药物的吸收、分布、代谢过程，以及药物分子与生物大分子（如蛋白质、核酸等）之间的相互作用。
+
+**材料科学：**研究材料的结构、相变、生长和界面等方面，以预测和优化材料的性能，如电子器件、催化剂和生物材料等。
+
+**凝聚态物理**：研究凝聚态系统中的结构、相变和动力学，如固体物理学、磁性材料和超导体等。
+
+**生物分子系统**：研究生物分子系统（如蛋白质、核酸和细胞等）的结构、功能和相互作用，以及生物分子系统在生物过程中的行为。
+
+**化学工程**：预测和优化化学反应过程，如催化剂的选择、反应机理和反应动力学等。
+
+**环境科学：**研究物质在环境中的扩散、迁移、反应和降解过程，以及环境污染物的处理和控制方法。
+
+
+
+## *4.3. Lammps Tutorials*
+
+LAMMPS 即 Large-scale Atomic/Molecular Massively Parallel Simulator，可以翻译为大规模原子分子并行模拟器，主要用于分子动力学相关的一些计算和模拟工作。
+
+> [(PDF) 分子动力学模拟及其LAMMPS实现-讲义 (researchgate.net)](https://www.researchgate.net/publication/360773643_fenzidonglixuemonijiqiLAMMPSshixian-jiangyi)
+>
+> [LAMMPS入门教程（1）——分子动力学模拟起源和LAMMPS简介 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/341613009)
+>
+> [LAMMPS 软件的安装与运行 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/657435571)
+
+## 1. 安装cmake
+
+编译 LAMMPS 源代码可以通过 `make` 和 `CMake` 两种方法，这里采用后者，因为这种方式具有很多优点，如可以自动检测当前环境和所依赖的库环境，还可以使用预配置文件。如果你缺乏编译软件经验或者想修改 LAMMPS 源码，推荐选择后者。
+
+使用 `CMake` 编译 LAMMPS 需要两个步骤。第一步使用 `cmake` 创建一个 `build` 环境。在这一步中，`CMake` 会检查是否支持 `MPI`、`OpenMP`、`FFTW`、`gzip`、 `JPEG`、`PNG` 以及 `ffmpeg` 并启用相应的配置设置，这一过程会在终端显示。第二步是使用 `camke` 或 `make` 编译 LAMMPS。这两步完成以后，你可以选择性地安装 LAMPPS，相应的命令为 `make install`。
+
+步骤一、安装gcc等必备程序包（已安装则略过此步）
+
+```
+yum install -y gcc gcc-c++ make automake 
+```
+
+步骤二、解压CMake源码包
+
+```
+tar -zxvf cmake-2.8.10.2.tar.gz
+```
+
+步骤三、进入目录
+
+```
+cd cmake-2.8.10.2
+```
+
+步骤四
+
+```
+./bootstrap
+gmake
+gmake install
+```
+
+![image-20231012233720863](https://s2.loli.net/2024/04/05/1PhlFTYUXCwnsBk.png)
+
+> 报错：-- Could NOT find OpenSSL, try to set the path to OpenSSL root folder in the system variable OPENSSL_ROOT_DIR (missing: OPENSSL_CRYPTO_LIBRARY OPENSSL_INCLUDE_DIR)
+>
+> yum install -y openssl-devel
+
+
+
+## 2. LAMMPS软件安装与运行
+
+[LAMMPS Molecular Dynamics Simulator](https://www.lammps.org/)
+
+步骤一、解压
+
+```
+tar -xzvf file.tar.gz
+```
+
+步骤二、编译LAMMPS
+
+```
+cd lammps-2Aug2023/
+mkdir build
+cd build
+cmake ../cmake -D BUILD_SHARED_LIBS=yes -D LAMMPS_EXCEPTIONS=yes
+cmake --build
+make install
+lmp
+```
+
+> 这里为了能在 Python 中调用 LAMMPS, 这里通过 `-D BUILD_SHARED_LIBS=yes` 将 LAMMPS 变成共享库。同时，官方也建议增加 `-D LAMMPS_EXCEPTIONS=yes` 选项。于是，配置 LAMMPS 安装特性的命令如下：
+>
+> ```text
+> vim ~/.bashrc
+> export PATH=/usr/local/bin:$PATH
+> export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+> ```
+
+
+
+# LAMMPS 使用教程
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# *5.  Deepmd*
+
+
+
+
+
+
+
+
+
+
+
+# *A. Electron transfer in a chemical process*
+
+## *A1. Difference charge density*
 
 **The differential charge density** is the difference in the charge density distribution obtained by subtracting the charge density before the operation from the charge density after the operation such as adsorption or substitution of a system.
 
 
 
-### *1.5.2 Bader Charge*
+## *A2. Bader Charge*
 
 >http://theory.cm.utexas.edu/henkelman/code/bader/
 >
@@ -308,11 +531,11 @@ VASP中控制优化步数的参数 NELM & NSW：
 >
 >[VASP从入门到入土：Bader电荷的计算 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/673557738)
 
-#### *1.5.2.1. Introduction*
+### *A2.1. Introduction*
 
 [Richard Bader](http://www.chemistry.mcmaster.ca/bader/), from McMaster University, developed an intuitive way of dividing molecules into atoms. His definition of an atom is based purely on the electronic charge density. Bader uses what are called **zero flux surfaces** to divide atoms. A zero flux surface is a 2-D surface on which the charge density is a minimum perpendicular to the surface. Typically in molecular systems, the charge density reaches a minimum between atoms and this is a natural place to separate atoms from each other.
 
-#### *1.5.2.2. Output files*
+### *A2.2. Output files*
 
 The following output files are generated: `ACF.dat`, `BCF.dat`, `AtomVolumes.dat`.
 
@@ -322,7 +545,7 @@ The following output files are generated: `ACF.dat`, `BCF.dat`, `AtomVolumes.dat
 
 - `AtomVolumes.dat` contains the number of each volume that has been assigned to each atom. These numbers correspond to the number of the BvAtxxxx.dat files.
 
-#### *1.5.2.3 Note for VASP users*
+### *A2.3 Note for VASP users*
 
 One major issue with the charge density (CHGCAR) files from the VASP code is that they only contain the valance charge density. The Bader analysis assumes that charge density maxima are located at atomic centers (or at pseudoatoms). Aggressive pseudopotentials remove charge from atomic centers where it is both expensive to calculate and irrelevant for the important bonding properties of atoms.
 
@@ -363,38 +586,15 @@ grep NGX OUTCAR
 
 
 
+## *A3. charge density difference* 
 
+差分电荷密度：成键后的电荷密度与对应的成键前的原子电荷密度之差。通过差分电荷密度的计算和分析，可以清楚地得到在成键和成键电子耦合过程中的电荷移动以及成键极化方向等性质。
 
-# *2. Lammps*
-
-LAMMPS是 Large-scale Atomic/Molecular Massively Parallel Simulator，是Steve Plimpton为主要作者开发一款开源的分子动力学模拟软件。LAMMPS可以模拟固态（金属，非金属，半导体等），液态（水，溶液），软物质（高分子，DNA，蛋白质），粗粒化物质。
-
-
-
-# *3. Toolkits for VASP* 
-
-## *3.1. Vaspkit*
+> Charge density difference of system AB:  **∆ρ = ρAB − ρA − ρB**
 
 
 
-## *3.2. qvasp* 
-
-https://sourceforge.net/projects/qvasp/files/latest/download
-
-qvasp is a material high-throughput design software based on the VASP package, which mainly includes two functions:
-
-1. Realizing high-throughput screening of materials, qvasp program not only can realize high-throughput material structure model constructing, but also provide high-throughput raw data postprocessing toolkits.
-2. Assisting users to easily generate input files and process output files, realizing rapid conversion between graphics and code, and improving work efficiency.
-
-
-
-
-
-
-
-# *3. 第一性原理*
-
-Solve quantum mechanic Schrodinger equation to  obtain Eigen value and Eigen function, and thus  the electronic structure. The charm is only atomic number and crystal structure  as input, which can determine precisely the structure  and the properties of the real materials.
+1. AB, A, B 需放在相同大小的空间格子。也就是保持相同的KPOINTS吗？
 
 
 
@@ -404,12 +604,9 @@ Solve quantum mechanic Schrodinger equation to  obtain Eigen value and Eigen fun
 
 
 
+# *B. Structural Optimization* 
 
-
-# *4. 分子动力学*
-
-
-
+结构优化是获得合理结构的过程。所谓合理的结构，大多数场景下为在某些限制下能量更低的结构。这些限制，可以是结构维度的限制（比如限制为二维材料）、晶格的限制（比如施加了应变、放置于衬底上）、元素分布的限制（比如进行吸附时要求吸附物的空间分布）、对称性的限制（比如双层二维材料不同的堆垛方式导致体系对称性不同）。若使用不合理的结构进行后续的计算，比如**体系能量、电子结构、磁态的计算**结果就会出现较大的误差甚至是致命错误。
 
 
 
@@ -419,12 +616,317 @@ Solve quantum mechanic Schrodinger equation to  obtain Eigen value and Eigen fun
 
 
 
+# *C. Phonon Calculation* 
+
+**Phonopy** is an open source package for phonon calculations at harmonic and quasi-harmonic levels.
+
+- 主要使用phonopy软件计算声子谱和二阶力常数矩阵
+- 声子简单来说就是描述晶格振动模式的量子化的准粒子，声子没有实体对应，它们是晶格振动模式的量子化表现。这种振动模式可以被看作是晶格中原子的集体运动，它们以波的形式在晶格中传播。
+
+> [Welcome to phonopy — Phonopy v.2.24.0](https://phonopy.github.io/phonopy/)
+>
+> [VASP计算笔记_声子谱计算_vasp理论计算-CSDN博客](https://blog.csdn.net/tiandijunhao/article/details/110622248)
+
+## C1.1 高精度地优化原胞结构
+
+准备原胞的 `POSCAR` 文件，并且高精度地优化这个结构
+
+```
+#unit cell结构优化的INCAR文件
+PREC = Accurate
+ENCUT = 500
+IBRION = 2	# 结构优化算法
+ISIF = 3	# 3是既优化原子坐标也优化晶格
+
+NSW = 100	# 优化步数
+NELMIN = 5	# 最小电子自洽步数
+EDIFF = 1.0e-08
+EDIFFG = -1.0e-08
+IALGO = 38
+ISMEAR = 0
+SIGMA = 0.1
+LREAL = .FALSE.
+LWAVE = .FALSE.
+LCHARG = .FALSE.
+NCORE = 4
+```
+
+
+
+## C1.2 使用phonopy扩胞
+
+使用 `phonopy` 来扩胞，得到计算所需的 `SPOSCAR` 和 `POSCAR-00*`
+
+```
+#在Linux终端直接运行命令 
+#1. 生成超胞，--dim='3 3 3'表示'x y z'方扩的大小，需要更改
+phonopy -d --dim="3 3 3"
+
+#2. 将生成的SPOSCAR拷贝成POSCAR进行DFPT计算，而POSCAR-00*是为了有限位移法计算
+cp SPOSCAR POSCAR
+```
+
+
+
+## C2.1. 密度泛函微扰理论 (DFPT)
+
+1. 必要的输入文件：`INCAR`，`KPOINTS`，`POTCAR`，`POSCAR-unitcell`(优化得到的初始晶胞)，`band.conf`
+
+2. 使用密度泛函微扰法 DFPT：
+
+   - 第一步：将POSCAR重命名为 `POSCAR-unitcell`
+
+   - 第二步：将SPOSCAR重命名为 `POSCAR`
+
+   - 第三步：准备POTCAR、INCAR和KPOINTS文件（需要对KPOINTS进行收敛测试，资源允许的情况下可以把K点设置成 3 3 1，4 4 1 等再算一遍声子谱。）
+
+   - 第四步：进行vasp计算，并且数据处理
+
+   - ```
+     #密度泛函微扰法的VASP输入文件INCAR
+     SYSTEM=IFC
+     
+     PREC = High
+     ISTART=0
+     ICHARG=2
+     ISPIN=1
+     
+     NELM = 60
+     NELMIN = 4
+     NELMDL = -3
+     EDIFF = 1.0e-08
+     ENCUT = 500
+     
+     IALGO = 38
+     ADDGRID = True
+     LREAL = .FALSE.
+     
+     NSW = 1			#只需要走一个离子步
+     IBRION = 8		#选择使用DFPT法计算力常数矩阵
+     EDIFFG = -1.0e-07
+     
+     ISMEAR = 0
+     SIGMA = 0.1
+     ```
+
+   - 准备 `band.conf` 文件，用于指导 `Phonopy` 软件包进行声子带结构的计算
+
+     ```
+     ATOM_NAME = Zn Pr
+     DIM = 2 2 2
+     BAND =0.0 0.0 0.0  0.5 0.0 0.0  0.5 0.5 0.0  0.0 0.5 0.0  0.0 0.0 0.0
+     BAND_LABELS = G X S Y G
+     FORCE_CONSTANTS= READ
+     FC_SYMMETRY = .TRUE.
+     ```
+
+   在声子谱计算中，`BAND` 标签用于指定计算声子带结构时需要考虑的高对称点和路径。这些点通常是布里渊区中的特定点，它们在声子带结构分析中具有重要意义。`BAND` 标签后面跟着的是一系列三维坐标，这些坐标定义了布里渊区中的路径。
+
+## C2.2. 有限位移法
+
+对原胞进行高精度的优化，主要影响参数：`EDIFF`, `EDIFFG`, `ISIF`
+
+```
+#INCAR文件
+PREC = Accurate
+ENCUT = 500
+IBRION = 2  # 结构优化算法
+ISIF = 3  # 3是既优化原子坐标也优化晶格
+NSW = 100  # 优化步数
+NELMIN = 5  # 最小电子自洽步数
+EDIFF = 1.0e-08  # 自洽能量收敛判据
+EDIFFG = -1.0e-08  # 结构优化能量收敛判据
+IALGO = 38  # 算法选择
+ISMEAR = 0  # Gaussian smearing
+SIGMA = 0.1  # smearing 宽度
+LREAL = .FALSE # 以下三个都是控制输出文件的
+LWAVE = .FALSE
+LCHARG = .FALSE
+```
+
+
+
+## C3.1 计算声子谱
+
+计算声子谱，连续运行以下三个命令 
+
+```
+#直接在终端运行
+#1. 提取力常数，得到FORCE_CONSTANTS文件。
+phonopy --fc vasprun.xml
+
+#2. 计算声子谱并保存为pdf格式
+phonopy -c POSCAR-unitcell band.conf -p -s
+
+#3. 将声子谱进一步输出为数据文件，用于其它软件画图。
+#旧版本phonopy
+bandplot  --gnuplot> phonon.out
+
+#新版本phonopy, phonon.out文件中首行是高对称点在x轴上的坐标
+phonopy-bandplot --gnuplot band.yaml>band.dat
+
+cp ../band.conf ./
+phonopy --fc vasprun.xml
+phonopy -c POSCAR-unitcell band.conf -p -s
+phonopy-bandplot --gnuplot band.yaml>band.dat
+```
+
+
+
+## C3.2.  声子谱结果
+
+原则上声子谱不应该有负频率，如果原点有负，则需要提高原胞结构优化的精度。如果其他地方有负频率，需要扩大超胞。
+
+在`band.pdf`中观察声子谱，在 `band.yaml` 中可以看到原子的振动信息
+
+-----
+
+**1. 在声子谱中，声学模式和光学模式的区别在哪里？**
+
+声学模式和光学模式是两种主要的声子振动模式，它们在**原子振动方式**和**频率范围**上有显著的区别：
+
+**声学模式**：
+
+- **原子振动**：在声学模式中，原子的振动方向相同，且相位相近。这意味着在一个单元格内的原子会同步振动，就像声波在介质中传播一样。
+- **频率范围**：声学模式的频率通常较低，当波矢量（晶格波的动量）接近零时，声学模式的频率也接近零。它们是无能量耗散的，因为它们不涉及电荷的重新分布。
+
+**光学模式：**
+
+- **原子振动**：在光学模式中，原子的振动方向相反，这会导致材料的电偶极矩发生变化。这种振动模式在具有多种原子类型的复杂晶格中尤为重要，因为它们可以引起电子云的重新分布。
+- **频率范围**：光学模式出现在声子谱的高频部分。即使当波矢量接近零，它们的频率也不为零，通常比声学模式的频率高。
+
+---
+
+**2. 能带图中的 k 点和声子谱中的 k 点一样吗？**
+
+能带图中的 k 点和声子谱中的 k 点本质上是相同的概念，但它们应用于不同的物理情境。在这两种情况下， k 点都表示晶体动量空间（或布里渊区）中的一个点，但它们分别关联到电子的能量状态和晶格振动模式。
+
+在数学上，无论是能带图还是声子谱，k 点都通过量子力学的波函数来描述，这些波函数与晶体的周期性结构相结合，形成能带和声子色散关系。注意：能带图通常在第一布里渊区内绘制，因为晶体的周期性使得超出这个区域的电子态可以通过周期性边界条件进行等效描述。
+
+**能带图中的 k 点**：
+
+- 在能带理论中， k 点表示电子的波矢，它是电子量子态的特征。
+- 能带图展示了电子的能量与其波矢（ k 值）之间的关系，用于描述固体中电子的能量分布。
+
+**声子谱中的 k 点：**
+
+- 在声子谱中， k 点也表示波矢，但它是晶格振动模式或声子的特征。
+- 声子谱显示了晶格振动模式的能量（或频率）与其相应的波矢（ k 值）之间的关系。
+
+---
+
+**3. 缺陷和畸变对声子谱有何影响？**
+
+**缺陷对声子谱的影响：**
+
+局部模式：晶体中的缺陷（如空位、杂质或替换原子）可以引入所谓的局部模式，通常表现为声子谱中的新峰或共振峰。
+
+散射中心：缺陷作为声子散射中心，会降低声子的平均自由程，从而影响材料的热导率。这是通过增加声子的散射率来实现的，导致热能传递效率降低。
+
+能带扁平化：在缺陷附近，声子的色散关系可能会出现扁平化，这意味着声子的能量变化不大，即使波矢变化。这种现象可以减少材料的热导率，因为声子的传播受到限制。
+
+**畸变对声子谱的影响：**
+
+对称性破坏：晶体结构的畸变（如晶格扭曲或应力）可以破坏晶体的对称性，这可能导致一些原本被禁止的声子模式变得允许，或者改变现有模式的频率。
+
+能隙的形成或变化：在声子色散关系中，畸变可能导致能隙的形成或变化。例如，一些原子的位移可能导致声子频谱中出现新的能隙。
+
+非谐效应的增强：结构畸变通常会增强声子模式之间的非谐相互作用，这会影响声子的寿命和热传导特性。
+
+---
+
+## C3.3. 声子态密度
+
+声子谱的态密度（Density of States, DOS）用于描述在固体物理学中声子（晶格振动的量子）的分布情况。态密度是每单位能量范围内可用的声子态的数量。它告诉我们在某个特定能量水平上有多少声子模式可以被激发。态密度实际上也就对应着能量分布，有了态密度，我们就可以根据统计力学得到想要的热力学量（宏观性质）。
+
+- **在低频（长波长）极限**，声子态密度通常呈线性增加，与声学模式相关。
+- **在高频（短波长）极限**，态密度通常达到峰值后迅速下降，与光学模式相关。
+
+DFPT计算得到FORCE_CONSTANTS文件，编写 `mesh.conf` 文件：
+
+```
+ATOM_NAME = C
+DIM = 2 2 2
+FORCE_CONSTANTS = READ
+MP = 30 30 30
+```
+
+> `DIM = 2 2 2`：这行定义了模拟的尺寸，通常指的是模拟单元在三个维度上的重复次数。
+>
+> `FORCE_CONSTANTS = READ`：这行指示程序从文件中读取力常数。力常数是描述原子间相互作用的参数，
+>
+> `MP = 30 30 30`：这行可能是指定模拟中使用的 Monkhorst-Pack 网格点数，这是一种在第一布里渊区进行均匀采样的方法。在这里，`30 30 30` 表示在三个方向上每个方向都有30个k点，这通常用于计算电子结构和声子色散关系。
+
+输入命令，即可得到 `total_dos.dat` ，进一步作图
+
+```
+phonopy -p mesh.conf POSCAR 
+```
 
 
 
 
 
+## C3.4. 投影声子态密度
 
+DFPT计算得到 `FORCE_CONSTANTS` 文件，其 `pdos.conf` 文件为
+
+```
+ATOM_NAME = C
+DIM = 2 2 2
+FORCE_CONSTANTS = READ
+MP = 10 10 10
+PDOS = 1, 2 3 4
+```
+
+
+
+输入命令，即可得到 `projected_dos.dat` ，进一步作图
+
+```
+phonopy -p pdos.conf -c POSCAR-unitcell
+```
+
+
+
+## C3.5 热学性质
+
+准备 `mesh.conf` 文件，温度范围[200，2000]，温度梯度为50
+
+DFPT计算得到 `FORCE_CONSTANTS` 文件，其 `mesh.conf` 文件为：
+
+```
+ATOM_NAME = C
+DIM = 2 2 2
+FORCE_CONSTANTS = READ
+MP = 10 10 10
+TPROP = T
+TMIN = 200
+TMAX = 2000
+TSTEP = 50
+```
+
+输入命令，即可得到 `thermal_properties.yaml` ，
+
+```
+phonopy -t mesh.conf -c POSCAR-unitcell
+```
+
+转换成 `thermal.dat` 文件
+
+```
+phonopy-propplot --gnuplot  thermal_properties.yaml > thermal.dat
+```
+
+
+
+在纳米尺度下，金刚石展现出了与宏观尺度截然不同的力学性能。根据搜索结果，当金刚石被制成纳米针时，它们可以承受巨大的弹性变形而不断裂。这种超强的弹性变形能力主要归因于纳米针的尺寸小、表面光滑以及缺陷极少。例如，一项研究中发现，纳米级单晶金刚石的弹性拉伸形变最大可以达到约9%，接近金刚石的理论弹性极限，而多晶金刚石纳米针的最大弹性应变约为3.5%，也远高于宏观金刚石样品通常所能达到的约0.3%的弹性应变。
+
+首先对diamond金刚石文件进行优化，接着扩胞
+
+并采取DFPT计算，得到无应变的情况
+
+优化，进行单轴拉伸、双轴拉伸和三轴拉伸，最后进行DFPT计算
 
 
 

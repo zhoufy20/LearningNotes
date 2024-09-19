@@ -355,6 +355,60 @@ There are three mandatory files in the **input folder**: CONTROL, PHONON and GEO
 
 
 
+----------------------
+
+## Section6: 
+
+### *6.1 MatterGPT: A Generative Transformer for Multi-Property Inverse Design of Solid-State Materials*
+
+> Title:  *MatterGPT: A Generative Transformer for Multi-Property Inverse Design of Solid-State Materials*
+>
+> Journal:  Arxiv	Published:  August 14, 2024
+>
+> Lead Author:  Yan Chen( Xi'an Jiaotong University )
+>
+> Key words:  GPT; SLICES; Solid-State Materials; On-demand Generation; Inverse Design.
+>
+> Artical address:  https://doi.org/10.48550/arXiv.2408.07608
+>
+> Code address:  [jzhang-github/AGAT: Atomic Graph Attention networks](https://github.com/jzhang-github/AGAT)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
