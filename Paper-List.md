@@ -136,7 +136,7 @@ dp train input.json
 
 
 
-### ? BPNN and DPNN
+### 2.3 BPNN and DPNN
 
 >  The Behler-Parrinello neural network (BPNN) and the deep tensor neural network (DTNN).
 
@@ -429,9 +429,9 @@ There are three mandatory files in the **input folder**: CONTROL, PHONON and GEO
 >
 > Key words:  AGAT (Atomic Graph Attention networks);  HEECs
 >
-> Artical adress:  [Design high-entropy electrocatalyst via interpretable deep graph attention learning ](https://www.researchgate.net/publication/372090098_Design_high-entropy_electrocatalyst_via_interpretable_deep_graph_attention_learning)
+> Artical address:  [Design high-entropy electrocatalyst via interpretable deep graph attention learning ](https://www.researchgate.net/publication/372090098_Design_high-entropy_electrocatalyst_via_interpretable_deep_graph_attention_learning)
 >
-> Code adress:  [jzhang-github/AGAT: Atomic Graph Attention networks](https://github.com/jzhang-github/AGAT)
+> Code address:  [jzhang-github/AGAT: Atomic Graph Attention networks](https://github.com/jzhang-github/AGAT)
 
 ==Method== The Author developed *an accurate and efficent atomic graph attention network* (AGAT) to accelerate the desigh of the high performance HEECs (high-entropy electrocatalyst). Finally, we apply the well-trained AGAT model to explore the compositional space and predict the high-performance catalysts.
 
@@ -457,7 +457,7 @@ But all these published models were constructed based on **the graph convolution
 >
 > Key words:  GAT (Graph Attention networks)
 >
-> Artical Adress:  [[1710.10903\] Graph Attention Networks (arxiv.org)](https://arxiv.org/abs/1710.10903)
+> Artical Address:  [[1710.10903\] Graph Attention Networks (arxiv.org)](https://arxiv.org/abs/1710.10903)
 >
 > interpretation:  [Graph Attention Networks - (zhihu.com)](https://zhuanlan.zhihu.com/p/296587158)
 
@@ -508,9 +508,9 @@ BonDNet maps the difference between the molecular representations of the reactan
 >
 >Key words:  interatomic force
 >
->Artical adress:  [Interatomic forces breaking carbon-carbon bonds - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0008622320312653)
+>Artical address:  [Interatomic forces breaking carbon-carbon bonds - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0008622320312653)
 >
->dataset adress:  [Interatomic forces breaking carbon-carbon bonds - Datasets - data.bris](https://data.bris.ac.uk/data/dataset/1ycz4js3rgnzk2dxw07im4dat3)
+>dataset address:  [Interatomic forces breaking carbon-carbon bonds - Datasets - data.bris](https://data.bris.ac.uk/data/dataset/1ycz4js3rgnzk2dxw07im4dat3)
 
 ==Content:== We compare **computational methods for determining the force** between carbon atoms as a function of bond length, in order to establish which ones are capable of accurately simulating carbon-carbon bonds breaking due to applied mechanical strain in nanomaterials. 
 
@@ -523,6 +523,86 @@ BonDNet maps the difference between the molecular representations of the reactan
 - Determining values for the peak stress experimentally is challenging, but has been achieved for polysaccharide molecules covalently bonded to a substrate, using an atomic force microscope tip to apply a measurable tensile force. As the description of *How Strong Is a Covalent Bond*, the main difficulty is determining which bond breaks.
 
 
+
+
+
+
+
+### How to add transformer to dgl?
+
+### 0.5 *Deep Graph Library*
+
+> [dmlc/dgl: Python package built to ease deep learning on graph, on top of existing DL frameworks. (github.com)](https://github.com/dmlc/dgl)
+
+DGL is an easy-to-use, high performance and scalable Python package for deep learning on graphs. DGL is framework agnostic, meaning if a deep graph model is a component of an end-to-end application, the rest of the logics can be implemented in any major frameworks, such as PyTorch, Apache MXNet or TensorFlow.
+
+
+
+### 0.6 *BP-Transformer: Modelling Long-Range Context via Binary Partitioning*
+
+> Title:  BP-Transformer: Modelling Long-Range Context via Binary Partitioning
+>
+> Journal:  Arxiv	
+>
+> Lead Author:  Zihao Ye ( AWS Shanghai AI Lab)
+>
+> Key words:  a fine-to-coarse attention mechanism
+>
+> Artical address : [1911.04070 (arxiv.org)](https://arxiv.org/pdf/1911.04070)
+>
+> Code address: 
+
+
+
+### 0.7 *Dark Reciprocal-Rank: Boosting Graph-Convolutional Self-Localization Network via Teacher-to-student Knowledge Transfer*
+
+> Title : Dark Reciprocal-Rank: Boosting Graph-Convolutional Self-Localization Network via Teacher-to-student Knowledge Transfer
+>
+> Journal : Arxiv	
+>
+> Lead Author : Takeda Koji ( AWS Shanghai AI Lab)
+>
+> Key words:  a fine-to-coarse attention mechanism
+>
+> Artical address : [[2011.00402 (arxiv.org)](https://arxiv.org/pdf/2011.00402)](https://arxiv.org/pdf/1911.04070)
+>
+> Code address: 
+
+
+
+### 0.8 *A Generalization of Transformer Networks to Graphs*
+
+> Title : A Generalization of Transformer Networks to Graphs
+>
+> Journal : Arxiv	
+>
+> Lead Author : Vijay Prakash Dwivedi ( School of Computer Science and Engineering, Nanyang Technological University, Singapore)
+>
+> Key words:  
+>
+> Artical address : [2012.09699 (arxiv.org)](https://arxiv.org/pdf/2012.09699)
+>
+> Code address: 
+
+
+
+### 0.9 *SE(3)-Transformers: 3D Roto-Translation Equivariant Attention Networks*
+
+> Title : SE(3)-Transformers: 3D Roto-Translation Equivariant Attention Networks
+>
+> Journal : Arxiv	
+>
+> Lead Author :  Fabian B. Fuchs ( Bosch Center for Artificial Intelligence A2I Lab, Oxford University)
+>
+> Key words:  
+>
+> Artical address : [2006.10503 (arxiv.org)](https://arxiv.org/pdf/2006.10503)
+>
+> Code address : [FabianFuchsML/se3-transformer-public: code for the SE3 Transformers paper: https://arxiv.org/abs/2006.10503 (github.com)](https://github.com/FabianFuchsML/se3-transformer-public)
+>
+> ***Check out [this work](https://developer.nvidia.com/blog/accelerating-se3-transformers-training-using-an-nvidia-open-source-model-implementation/) by Alexandre Milesi et al. from Nvidia. They managed to speed up training of the SE(3)-Transformer by up to 21(!) times and reduced memory consumption by up to 43 times. Code [here](https://github.com/NVIDIA/DeepLearningExamples/tree/master/DGLPyTorch/DrugDiscovery/SE3Transformer).***
+
+The SE(3)-Transformer, a variant of the self-attention module for 3D point clouds and graphs, which is equivariant under continuous 3D roto-translations.
 
 
 

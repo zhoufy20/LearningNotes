@@ -168,7 +168,7 @@ cudnn.is_acceptable(a.cuda()) # 若正常返回True
 
 
 
-## 3. Git
+## 3. Git 
 
 [The use of .gitignore of zhihu](https://zhuanlan.zhihu.com/p/52885189)
 
@@ -249,7 +249,7 @@ https://rubygems.org/pages/download
 
 ## 6. Docker ( Linux )
 
-### 1. linux内核版本依赖  **kernel version >= 3.8**
+### 6.1. linux内核版本依赖  **kernel version >= 3.8**
 
 ```dockerfile
 uname -a | awk '{split($3, arr, "-"); print arr[1]}'
@@ -257,7 +257,7 @@ uname -a | awk '{split($3, arr, "-"); print arr[1]}'
 
 
 
-### 2. 添加Docker repository yum源
+### 6.2. 添加Docker repository yum源
 
 ```dockerfile
 # 国内源, 速度更快, 推荐
@@ -273,14 +273,14 @@ sudo yum-config-manager \
 >3. yum clean all
 >4. yum makecache
 
-### 3. 开始安装Docker Engine
+### 6.3. 开始安装Docker Engine
 
 ```dockerfile
 sudo yum makecache fast
 sudo yum install docker-ce docker-ce-cli containerd.io
 ```
 
-### 4. 开启Docker
+### 6.4. 开启Docker
 
 ```dockerfile
 ### 开启Docker
@@ -290,4 +290,38 @@ sudo systemctl start docker
 ### 验证是否安装成功
 sudo docker run hello-world
 ```
+
+
+
+## 7. 搭建个人网站
+
+> 【云服务器】请在安全组放行 8888 端口
+> 外网面板地址: https://39.105.13.69:8888/f949e5e2
+> 内网面板地址: https://172.19.0.20:8888/f949e5e2
+> username: gjtas6yn
+> password: e0f5c5f6
+
+
+
+
+
+## 8. Python 爬虫
+
+爬虫（又被称为网页蜘蛛，网络机器人）就是模拟浏览器发送网络请求，接收请求响应，可以按照一定的规则，自动地抓取互联网信息的程序。爬虫技术，虽说有个诡异的名字，第一反应是那种软软的蠕动的生物，但它却是一个可以在虚拟世界里，无往不前的利器。
+
+```
+from bs4 import BeautifulSoup	# 网页解析，获取数据
+import re	# 正则化表达式，进行文字匹配
+import urllib.request, urllib.error	# 制定URL，获取网页数据	
+import xlwt	# 进行excel操作
+import sqlite3 	# 进行SQLite数据库操作
+```
+
+
+
+
+
+
+
+
 
