@@ -1,19 +1,6 @@
 # **Some significant commands** 
 
-- [1. Linux](#1-linux)
-- [2. Anaconda](#2-anaconda)
-- [3. Git](#3-git)
-- [4. Cluster operation](#4-cluster-operation)
-  * [4.1 节点状态排查](#41-------)
-  * [4.2 作业状态排查](#42-------)
-- [5. jekyll on Windows](#5-jekyll-on-windows)
-- [6. Docker ( Linux )](#6-docker---linux--)
-  * [1. linux内核版本依赖  **kernel version >= 3.8**](#1-linux----------kernel-version----38--)
-  * [2. 添加Docker repository yum源](#2---docker-repository-yum-)
-  * [3. 开始安装Docker Engine](#3-----docker-engine)
-  * [4. 开启Docker](#4---docker)
-
-## 1. Linux
+## *1. Linux*
 
 > [超算入门课程1 致敬"银河•天河"40年超级计算奋进征途 | 超算小站 (mrzhenggang.com)](https://nscc.mrzhenggang.com/supercomputer-courses/history-40-years/)
 >
@@ -96,7 +83,7 @@ default  = feiyu
 
 
 
-## 2. Anaconda
+## *2. Anaconda*
 
 [Anaconda conda](https://blog.csdn.net/chenxy_bwave/article/details/119996001)
 
@@ -168,7 +155,7 @@ cudnn.is_acceptable(a.cuda()) # 若正常返回True
 
 
 
-## 3. Git 
+## *3. Git with github*
 
 [The use of .gitignore of zhihu](https://zhuanlan.zhihu.com/p/52885189)
 
@@ -194,31 +181,23 @@ git reset --hard origin/main
 
 
 
-## 4. Cluster operation
-
-### 4.1 节点状态排查 
-
-```bash
-sinfo  # 查看集群所有计算节点状态
-sinfo -p nodename # 查看指定计算节点状态
-# idle表示节点当前为空闲状态, alloc表示节点当前被占用
-# drng表示当前节点正准备排除出集群, drain表示已经排除出集群(两者都表明节点状态异常)
-sinfo -R  # 查看异常状态节点的原因
-```
-
-### 4.2 作业状态排查
 
 
 
 
+## *4. Website*
+
+**搭建个人网站**
+
+> 【云服务器】请在安全组放行 8888 端口
+> 外网面板地址: https://39.105.13.69:8888/f949e5e2
+> 内网面板地址: https://172.19.0.20:8888/f949e5e2
+> username: gjtas6yn
+> password: e0f5c5f6
 
 
 
-
-
-
-
-## 5. jekyll on Windows
+**jekyll on Windows**
 
 Jekyll 是一个静态站点生成器，内置 GitHub Pages 支持和简化的构建过程。
 
@@ -247,69 +226,64 @@ https://rubygems.org/pages/download
 
 
 
-## 6. Docker ( Linux )
+## *5. Docker*
 
-### 6.1. linux内核版本依赖  **kernel version >= 3.8**
+**Docker** 是一个开源的应用容器引擎，可以轻松的为任何应用创建一个轻量级的、可移植的、自给自足的容器。与虚拟机通过操作系统实现隔离不同，容器技术只隔离应用程序的运行时环境但容器之间可以共享同一个操作系统，这里的运行时环境指的是程序运行依赖的各种库以及配置。
 
-```dockerfile
-uname -a | awk '{split($3, arr, "-"); print arr[1]}'
+docker中有这样几个概念: `dockerfile`, `image`, `container`, 实际上你可以简单的把`image`理解为可执行程序, `container`就是运行起来的进程。那么写程序需要源代码，那么“写”image就需要dockerfile，dockerfile就是image的源代码，docker就是"编译器"。
+
+```do
+# 列出本机的所有 image 文件：
+docker images
+# 列出本机的所有 docker容器：
+docker ps -a
+# 列出本机的运行中的 docker容器：
+docker ps
+
+# 搜索我们想要的anaconda镜像
+docker search anaconda
+
+# 拉取原始镜像命令
+docker pull whereyour/what:latest
+# 在原命令前缀加入加速镜像地址 
+docker pull dockerpull.com/whereyour/what:latest
+
+# 用continuumio/anaconda3镜像创建一个名为test的容器
+docker run --name testname -idt continuumio/anaconda3
+# 进入test容器
+docker exec -it testname /bin/bash
+
+# 在本地环境中将本地环境复制到docker中
+docker cp /home/deroot/miniconda3/envs/cpfnetgpu test:/opt/conda/envs
+docker cp /home/deroot/cbpfnet test:/root/
+
+# 将容器保存为镜像
+docker commit -a 'author' -m 'instruction' testname imagename
+# 将镜像存为压缩包
+docker save -o testname.tar imagename
+# 读取镜像
+docker load -i testname.tar
+# 用testname镜像创建一个名为create_test的容器
+docker run --name creat_test -idt image_test
+
+# 启动容器 停止容器 删除容器 删除镜像-需先删除关联的容器
+docker start 'CONTAINER ID'
+docker stop 'CONTAINER ID'
+docker rm 'CONTAINER ID'
+docker rmi 'IMAGE ID'
 ```
 
 
 
-### 6.2. 添加Docker repository yum源
-
-```dockerfile
-# 国内源, 速度更快, 推荐
-sudo yum-config-manager \
-    --add-repo \
-    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
-```
-
->yum-config-manager: command not found命令找不到的解决方法:
->
->1. yum -y install yum-utils
->2. *重新加载 yum*
->3. yum clean all
->4. yum makecache
-
-### 6.3. 开始安装Docker Engine
-
-```dockerfile
-sudo yum makecache fast
-sudo yum install docker-ce docker-ce-cli containerd.io
-```
-
-### 6.4. 开启Docker
-
-```dockerfile
-### 开启Docker
-sudo systemctl enable docker
-sudo systemctl start docker
-
-### 验证是否安装成功
-sudo docker run hello-world
-```
-
-
-
-## 7. 搭建个人网站
-
-> 【云服务器】请在安全组放行 8888 端口
-> 外网面板地址: https://39.105.13.69:8888/f949e5e2
-> 内网面板地址: https://172.19.0.20:8888/f949e5e2
-> username: gjtas6yn
-> password: e0f5c5f6
 
 
 
 
-
-## 8. Python 爬虫
+## *6. Web Scraping*
 
 爬虫（又被称为网页蜘蛛，网络机器人）就是模拟浏览器发送网络请求，接收请求响应，可以按照一定的规则，自动地抓取互联网信息的程序。爬虫技术，虽说有个诡异的名字，第一反应是那种软软的蠕动的生物，但它却是一个可以在虚拟世界里，无往不前的利器。
 
-```
+```python
 from bs4 import BeautifulSoup	# 网页解析，获取数据
 import re	# 正则化表达式，进行文字匹配
 import urllib.request, urllib.error	# 制定URL，获取网页数据	
@@ -320,6 +294,26 @@ import sqlite3 	# 进行SQLite数据库操作
 
 
 
+
+## *7. GPUs Parallel*
+
+> [Distributed communication package - torch.distributed — PyTorch 2.4 documentation](https://pytorch.org/docs/stable/distributed.html)
+>
+> [科研第五步：如何使用DDP分布式多GPU并行跑pytorch深度学习训练_ddp 如何使用-CSDN博客](https://blog.csdn.net/fs1341825137/article/details/123233295#:~:text=这里基于pytorc)
+
+在深度学习的炼丹之路上，多GPU的使用如同助燃剂，能够极大地加速模型的训练和测试。根据不同的GPU数量和内存配置，我们可以选择多种策略来充分利用这些资源。
+
+在PyTorch中，有多种方式可以实现多GPU的并行计算，包括`DataParallel`、`DistributedDataParallel`以及手动模型拆分等。
+
+- DataParallel（DP）：Parameter Server模式，一张卡为reducer，实现也超级简单，一行代码。
+
+- DistributedDataParallel（DDP）：All-Reduce模式，本意是用来分布式训练，但是也可用于单机多卡。
+
+每种方式都有其适用的场景和优缺点，我们需要根据具体的任务和数据集来选择合适的策略，主要分为**数据并行和模型并行二种策略。**
+
+- 模型并行：模型大到单个显卡放不下的地步，就把模型分为几个部分分别放于不同的显卡上单独运行，各显卡输入相同的数据
+
+- 数据并行：不同的显卡输入不同的数据，运行完全相同的完整的模型（更为常用）。
 
 
 

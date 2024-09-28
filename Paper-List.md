@@ -2,9 +2,9 @@
 
 > The continuous emergence of papers, in fact, is the academic upgrade of the installation package. You keep reading papers to keep up with the academic community. However, it only makes sense to install this upgrade package once you are in sync with the basics on which this paper relies.
 >
-> Literature review summary focus: what is studied, where is the innovation point, what is the research method, what is the conclusion.
+> Literature review summary focus : what is studied, where is the innovation point, what is the research method, what is the conclusion.
 >
-> Research entry point: which methodologies have been employed to address the fundamental issue, what are the strengths and limitations of the approach, and how can it be enhanced.
+> Research entry point : which methodologies have been employed to address the fundamental issue, what are the strengths and limitations of the approach, and how can it be enhanced.
 
 ------
 
@@ -16,7 +16,7 @@
 
 ### *1.1.1. Light-enhanced osmotic energy generation with an aramid nanofiber membrane*
 
-==CONTENT:== Here, we utilized **aramid nanofiber (ANF) semiconductor-based membranes** to enable light-driven proton transport for osmotic energy generation. Under unilateral illumination, the light-driven proton transport system converted light energy into electrical energy and showed wavelength- and intensity-dependent transmembrane potentials and currents. 
+==CONTENT :== Here, we utilized **aramid nanofiber (ANF) semiconductor-based membranes** to enable light-driven proton transport for osmotic energy generation. Under unilateral illumination, the light-driven proton transport system converted light energy into electrical energy and showed wavelength- and intensity-dependent transmembrane potentials and currents. 
 
 
 
@@ -30,7 +30,7 @@
 
 ### *1.1.2. A synergistic interfacial and topological strategy for reinforcing aramid nanofiber films*
 
-==CONTENT:== Herein, we present **a synergistic enhancement strategy** by regulating the interfacial interaction and topological structure to prepare a super-strong and super-tough film. Strong interfacial interaction was achieved by Bronsted neutralization reaction between graphene oxide (GO) and aramid nanofibers (ANFs), and the topological structure was regulated using polyvinyl alcohol micelles to greatly reduce structural defects, thus synergistically improving stress transfer among nanomaterials.
+==CONTENT :== Herein, we present **a synergistic enhancement strategy** by regulating the interfacial interaction and topological structure to prepare a super-strong and super-tough film. Strong interfacial interaction was achieved by Bronsted neutralization reaction between graphene oxide (GO) and aramid nanofibers (ANFs), and the topological structure was regulated using polyvinyl alcohol micelles to greatly reduce structural defects, thus synergistically improving stress transfer among nanomaterials.
 
 The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvinyl alcohol) was fabricated through a sol–gel–film process, and is abbreviated as AGP film.
 
@@ -46,7 +46,7 @@ The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvi
 
 ### *1.1.3. Transition metal hydroxides@conducting MOFs on carbon nanotube yarns for ultra-stable quasi-solid-state supercapacitors with a ship-in-a-bottle architecture*
 
-==CONTENT:== Herein, we report **a ship-in-a-bottle architecture on carbon nanotube yarn (CNTY) based SCs**, in which transition metal hydroxide (TMH) nanoparticles (Ni(OH)2 or Co(OH)2) are confined in conducting nanoporous metal–organic frameworks (MOFs, Ni3(HITP)2) which anchor onto CNTY, involves the synergy of nanoconfinement and hydrogen bonding network to mutually support each phase toward improved electrochemical performance.
+==CONTENT :== Herein, we report **a ship-in-a-bottle architecture on carbon nanotube yarn (CNTY) based SCs**, in which transition metal hydroxide (TMH) nanoparticles (Ni(OH)2 or Co(OH)2) are confined in conducting nanoporous metal–organic frameworks (MOFs, Ni3(HITP)2) which anchor onto CNTY, involves the synergy of nanoconfinement and hydrogen bonding network to mutually support each phase toward improved electrochemical performance.
 
 - Yarn-shaped supercapacitors (SCs) functionalized with pseudocapacitive materials，especially long-term cycling stability, owing to the volumetric change during charging/discharging.
 
@@ -86,17 +86,17 @@ The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvi
 
 ### 2.2 *DP-GEN: A concurrent learning platform for the generation of reliable deep learning based potential energy models*
 
-> <DP-GEN: A concurrent learning platform for the generation of reliable deep learning based potential energy models>
+> DP-GEN: A concurrent learning platform for the generation of reliable deep learning based potential energy models
 >
-> Journal:  nature machine intelligence	Published:  14 September 2023
+> Journal : nature machine intelligence	Published:  14 September 2023
 >
-> Lead Author:  Bowen Deng (Department of Materials Science and Engineering, University of California Berkeley)
+> Lead Author : Bowen Deng (Department of Materials Science and Engineering, University of California Berkeley)
 >
-> Key words:  machine-learning interatomic potential	magnetic moments	
+> Key words : machine-learning interatomic potential	magnetic moments	
 >
-> Artical adress:  [CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling](https://www.nature.com/articles/s42256-023-00716-3)
+> Artical address : [CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling](https://www.nature.com/articles/s42256-023-00716-3)
 >
-> Code adress:  [DPGEN’s documentation — DP-GEN documentation (deepmodeling.com)](https://docs.deepmodeling.com/projects/dpgen/en/latest/index.html)
+> Code address:  [DPGEN’s documentation — DP-GEN documentation (deepmodeling.com)](https://docs.deepmodeling.com/projects/dpgen/en/latest/index.html)
 >
 > [Deepmd-kit & DPGEN 使用笔记 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/362073474)
 
@@ -110,7 +110,7 @@ The film composed of ANFs(aramid nanofibers), GO(graphene oxide), and PVA(polyvi
 
 ### *2.1. and 2.2. DeePMD-Kit Code*
 
-DeePMD-kit: A deep learning package for many-body potential energy representation and molecular dynamics. DeePMD-kit takes a **system** as the data structure. A snapshot of a system is called a **frame**. A system may contain multiple frames with the same atom types and numbers, i.e. the same formula (like `H2O`). 
+DeePMD-kit : A deep learning package for many-body potential energy representation and molecular dynamics. DeePMD-kit takes a **system** as the data structure. A snapshot of a system is called a **frame**. A system may contain multiple frames with the same atom types and numbers, i.e. the same formula (like `H2O`). 
 
 
 
@@ -146,23 +146,23 @@ BPNN uses the so-called symmetry functions as input and a standard neural networ
 
 ### 2.4 *CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling*
 
-> <CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling>
+> CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling
 >
-> Journal:  nature machine intelligence	Published:  14 September 2023
+> Journal : nature machine intelligence	Published : 14 September 2023
 >
-> Lead Author:  Bowen Deng (Department of Materials Science and Engineering, University of California Berkeley)
+> Lead Author : Bowen Deng (Department of Materials Science and Engineering, University of California Berkeley)
 >
-> Key words:  machine-learning interatomic potential	magnetic moments	
+> Key words : machine-learning interatomic potential	magnetic moments	
 >
-> Artical adress:  [CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling](https://www.nature.com/articles/s42256-023-00716-3)
+> Artical address : [CHGNet as a pretrained universal neural network potential for charge-informed atomistic modelling](https://www.nature.com/articles/s42256-023-00716-3)
 >
-> Code adress:  [CHGNet (lbl.gov)](https://chgnet.lbl.gov/)
+> Code address : [CHGNet (lbl.gov)](https://chgnet.lbl.gov/)
 >
 > [https://github.com/CederGroupHub/chgnet](https://github.com/CederGroupHub/chgnet)
 >
 > [Ceder课题组最新工作：利用图神经网络构造通用势能函数加速能源材料模拟研发 (qq.com)](https://mp.weixin.qq.com/s/wlLpdPjyVbtsfa3ElXkh4w)
 
-==Content:== Large-scale simulations with complex electron interactions remain one of the greatest challenges for atomistic modelling. Although **classical force fields** often fail to describe the coupling between electronic states and ionic rearrangements, the more accurate **ab initio molecular dynamics** suffers from computational complexity that prevents long-time and large-scale simulations, which are essential to study technologically relevant phenomena. 
+==Content :== Large-scale simulations with complex electron interactions remain one of the greatest challenges for atomistic modelling. Although **classical force fields** often fail to describe the coupling between electronic states and ionic rearrangements, the more accurate **ab initio molecular dynamics** suffers from computational complexity that prevents long-time and large-scale simulations, which are essential to study technologically relevant phenomena. 
 
 Here we present **the Crystal Hamiltonian Graph Neural Network** (CHGNet), a graph neural network-based machine-learning interatomic potential (MLIP) that models the universal potential energy surface. 
 
@@ -211,7 +211,7 @@ The Materials Project Database contains a vast collection of DFT calculations on
 
 ### *2.4 DMFF: An Open-Source Automatic Differentiable Platform for Molecular Force Field Development and Molecular Dynamics Simulation*
 
-> Title:  *An Open-Source Automatic Differentiable Platform for Molecular Force Field Development and Molecular Dynamics Simulation*
+> Title : *An Open-Source Automatic Differentiable Platform for Molecular Force Field Development and Molecular Dynamics Simulation*
 >
 > Journal:  American Chemical Society	Impact Factor: 	Published: December 20, 2023
 >
@@ -225,11 +225,11 @@ The Materials Project Database contains a vast collection of DFT calculations on
 
 ### *2.5. PhyNEO: A Neural-Network-Enhanced Physics-Driven Force Field Development Workflow for Bulk Organic Molecule and Polymer Simulations*
 
-> Title:  *PhyNEO: A Neural-Network-Enhanced Physics-Driven Force Field Development Workflow for Bulk Organic Molecule and Polymer Simulations*
+> Title : *PhyNEO: A Neural-Network-Enhanced Physics-Driven Force Field Development Workflow for Bulk Organic Molecule and Polymer Simulations*
 >
 > Journal:  American Chemical Society	Impact Factor: 	Published: December 20, 2023
 >
-> Lead Author：Junmin Chen(   )
+> Lead Author：Junmin Chen
 >
 > Key words:  force fields
 >
@@ -307,7 +307,7 @@ There are three mandatory files in the **input folder**: CONTROL, PHONON and GEO
 >
 > Key words:   AGAT (Atomic Graph Attention networks);	HEECs
 >
-> Artical adress:  [Efficient and stable emission of warm-white light from lead-free halide double perovskites | Nature](https://www.nature.com/articles/s41586-018-0691-0)
+> Artical address:  [Efficient and stable emission of warm-white light from lead-free halide double perovskites | Nature](https://www.nature.com/articles/s41586-018-0691-0)
 >
 
 
@@ -335,13 +335,13 @@ There are three mandatory files in the **input folder**: CONTROL, PHONON and GEO
 
 > Title:  *Suppressed thermal transport in silicon nanoribbons by inhomogeneous strain*
 >
-> Journal:  Nature	Impact Factor:  	Published:  April 05, 2024
+> Journal: Nature	Impact Factor:  	Published: April 05, 2024
 >
-> Lead Author:  Lin Yang( Department of Advanced Manufacturing and Robotics, College of Engineering, Peking University, Beijing, People’s Republic of China. )
+> Lead Author : Lin Yang( Department of Advanced Manufacturing and Robotics, College of Engineering, Peking University, Beijing, People’s Republic of China. )
 >
-> Key words:  AGAT (Atomic Graph Attention networks);  HEECs
+> Key words : AGAT (Atomic Graph Attention networks);  HEECs
 >
-> Artical adress:  https://doi.org/10.1038/s41586-024-07390-4
+> Artical address : https://doi.org/10.1038/s41586-024-07390-4
 >
 
 ==CONTENT:== Here we address this gap **by introducing inhomogeneous strain** through bending individual silicon nanoribbons on a custom-fabricated microdevice and measuring its effect on thermal transport while characterizing the strain-dependent vibrational spectra with sub-nanometre resolution. 
@@ -474,17 +474,17 @@ But all these published models were constructed based on **the graph convolution
 
 ### 0.3 *BonDNet: a graph neural network for the prediction of bond dissociation energies for charged molecules*
 
-> Title:  BonDNet: a graph neural network for the prediction of bond dissociation energies for charged molecules
+> Title: BonDNet: a graph neural network for the prediction of bond dissociation energies for charged molecules
 >
-> Journal:  Chemical Science	Impact Factor:  62.10	Accepted 3rd December 2020
+> Journal: Chemical Science	Impact Factor: 62.10	Accepted 3rd December 2020
 >
-> Lead Author:  Mingjian Wen ( University of California)
+> Lead Author: Mingjian Wen ( University of California)
 >
-> Key words:  the bond dissociation energy
+> Key words: the bond dissociation energy
 >
-> Artical adress:  [BonDNet: a graph neural network for the prediction of bond dissociation energies for charged molecules - Chemical Science (RSC Publishing)](https://pubs.rsc.org/en/content/articlelanding/2021/SC/D0SC05251E)
+> Artical address: [BonDNet: a graph neural network for the prediction of bond dissociation energies for charged molecules - Chemical Science (RSC Publishing)](https://pubs.rsc.org/en/content/articlelanding/2021/SC/D0SC05251E)
 >
-> Code adress:  [mjwen/bondnet](https://github.com/mjwen/bondnet)
+> Code address: [mjwen/bondnet](https://github.com/mjwen/bondnet)
 
 ==Content:== We propose a chemically inspired graph neural network machine learning model, BonDNet, for the rapid and accurate prediction of BDEs, capable of predicting both homolytic and heterolytic BDEs for molecules of any charge. 
 
@@ -528,7 +528,7 @@ BonDNet maps the difference between the molecular representations of the reactan
 
 
 
-### How to add transformer to dgl?
+## How to add transformer to dgl?
 
 ### 0.5 *Deep Graph Library*
 
@@ -542,13 +542,13 @@ DGL is an easy-to-use, high performance and scalable Python package for deep lea
 
 > Title:  BP-Transformer: Modelling Long-Range Context via Binary Partitioning
 >
-> Journal:  Arxiv	
+> Journal: Arxiv	
 >
-> Lead Author:  Zihao Ye ( AWS Shanghai AI Lab)
+> Lead Author: Zihao Ye ( AWS Shanghai AI Lab)
 >
-> Key words:  a fine-to-coarse attention mechanism
+> Key words: a fine-to-coarse attention mechanism
 >
-> Artical address : [1911.04070 (arxiv.org)](https://arxiv.org/pdf/1911.04070)
+> Artical address: [1911.04070 (arxiv.org)](https://arxiv.org/pdf/1911.04070)
 >
 > Code address: 
 
@@ -572,15 +572,15 @@ DGL is an easy-to-use, high performance and scalable Python package for deep lea
 
 ### 0.8 *A Generalization of Transformer Networks to Graphs*
 
-> Title : A Generalization of Transformer Networks to Graphs
+> Title: A Generalization of Transformer Networks to Graphs
 >
-> Journal : Arxiv	
+> Journal: Arxiv	
 >
-> Lead Author : Vijay Prakash Dwivedi ( School of Computer Science and Engineering, Nanyang Technological University, Singapore)
+> Lead Author: Vijay Prakash Dwivedi ( School of Computer Science and Engineering, Nanyang Technological University, Singapore)
 >
 > Key words:  
 >
-> Artical address : [2012.09699 (arxiv.org)](https://arxiv.org/pdf/2012.09699)
+> Artical address: [2012.09699 (arxiv.org)](https://arxiv.org/pdf/2012.09699)
 >
 > Code address: 
 
@@ -590,29 +590,53 @@ DGL is an easy-to-use, high performance and scalable Python package for deep lea
 
 > Title : SE(3)-Transformers: 3D Roto-Translation Equivariant Attention Networks
 >
-> Journal : Arxiv	
+> Journal: Arxiv	
 >
-> Lead Author :  Fabian B. Fuchs ( Bosch Center for Artificial Intelligence A2I Lab, Oxford University)
+> Lead Author:  Fabian B. Fuchs ( Bosch Center for Artificial Intelligence A2I Lab, Oxford University)
 >
 > Key words:  
 >
-> Artical address : [2006.10503 (arxiv.org)](https://arxiv.org/pdf/2006.10503)
+> Artical address: [2006.10503 (arxiv.org)](https://arxiv.org/pdf/2006.10503)
 >
-> Code address : [FabianFuchsML/se3-transformer-public: code for the SE3 Transformers paper: https://arxiv.org/abs/2006.10503 (github.com)](https://github.com/FabianFuchsML/se3-transformer-public)
+> Code address: [FabianFuchsML/se3-transformer-public: code for the SE3 Transformers paper: https://arxiv.org/abs/2006.10503 (github.com)](https://github.com/FabianFuchsML/se3-transformer-public)
 >
 > ***Check out [this work](https://developer.nvidia.com/blog/accelerating-se3-transformers-training-using-an-nvidia-open-source-model-implementation/) by Alexandre Milesi et al. from Nvidia. They managed to speed up training of the SE(3)-Transformer by up to 21(!) times and reduced memory consumption by up to 43 times. Code [here](https://github.com/NVIDIA/DeepLearningExamples/tree/master/DGLPyTorch/DrugDiscovery/SE3Transformer).***
 
 The SE(3)-Transformer, a variant of the self-attention module for 3D point clouds and graphs, which is equivariant under continuous 3D roto-translations.
 
+Equivariance generalises the translational weight-tying of convolutions. It ensures that transformations of a layer’s input manifest as equivalent transformations of the output.
+
+
+
+```
+docker run -it --runtime=nvidia --shm-size=8g --ulimit memlock=-1 --ulimit stack=67108864 --rm -v ${PWD}/results:/workspace/se3-transformer/results se3-transformer:latest
+
+
+bash scripts/train.sh  # or scripts/train_multi_gpu.sh
+
+```
+
+
+
+### 0.10 Equiformer: Equivariant Graph Attention Transformer for 3D Atomistic Graphs
+
+In this work, we demonstrate that Transformers can generalize well to 3D atomistic graphs and present Equiformer, an equivariant graph neural network utilizing SE(3)/E(3)-equivariant features built from irreducible representations (irreps) and a novel attention mechanism to combine the 3D-related inductive bias with the strength of Transformer.
+
+### 0.11 EquiformerV2: Improved Equivariant Transformer for Scaling to Higher-Degree Representations
+
+
+
+> https://github.com/lucidrains/se3-transformer-pytorch
+>
+> https://github.com/lucidrains/equiformer-pytorch
+>
+> 
+>
+> https://github.com/atomicarchitects/equiformer_v2
 
 
 
 
 
-
-
-
-
-
-
+> Code: https://github.com/atomicarchitects/equiformer
 
