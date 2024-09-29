@@ -640,3 +640,23 @@ In this work, we demonstrate that Transformers can generalize well to 3D atomist
 
 > Code: https://github.com/atomicarchitects/equiformer
 
+```
+MD17: http://www.quantum-machine.org/gdml/data/npz/
+```
+
+**atomistic graphs**
+
+There are two main ways to represent atomistic graphs,  which are chemical bond graphs, sometimes denoted as **2D graphs**, and **3D spatial graphs**. Chemical bond graphs use edges to represent covalent bonds without considering 3D geometry. On the other hand, 3D spatial graphs consider positions of atoms in 3D spaces and therefore 3D geometry. 
+
+Although 3D graphs can faithfully represent atomistic systems, one challenge of moving from chemical bond graphs to 3D spatial graphs is to remain **invariant or equivariant** to geometric transformation acting on atom positions. Therefore, invariant neural networks and equivariant neural networks have been proposed for 3D atomistic graphs, with the former leveraging invariant information like distances and angles and the latter operating on geometric tensors like **type-L vectors.**
+
+> The term "type-L vectors" refers to a specific representation of geometric information in molecular systems or atomic graphs. In the context of equivariant neural networks for 3D atomistic graphs, "type-L" is associated with the use of geometric tensors that are invariant under certain transformations, such as rotations and reflections. 
+>
+> L" often refers to the order of the tensor that the network can handle. Tensors are multi-dimensional arrays of data that can represent various physical quantities. The "degree" of a tensor refers to its rank (e.g., scalars are 0th-order tensors, vectors are 1st-order, matrices are 2nd-order).
+
+**Equiformer**
+
+We embed input 3D graphs with atom and edge-degree embeddings and process them with Transformer blocks, consisting of equivariant graph attention and feed forward networks. 
+
+
+
