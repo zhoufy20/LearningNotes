@@ -1,0 +1,8 @@
+\contentsline {chapter}{\numberline {1}Transformer}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Equiformer}{1}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}What is an equivariant neural network?}{1}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Tensor field networks: Rotation- and translation-equivariant neural networks for 3D point clouds }{1}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}SE(3)-Transformers: 3D Roto-Translation Equivariant Attention Networks}{1}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Equiformer: Equivariant Graph Attention Transformer for 3D Atomistic Graphs}{1}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}EquiformerV2: Improved Equivariant Transformer for Scaling to Higher-Degree Representations}{2}{subsection.1.1.5}%
+\contentsline {chapter}{\numberline {2}Deep Molecular dynamics}{3}{chapter.2}%

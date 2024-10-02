@@ -528,7 +528,7 @@ BonDNet maps the difference between the molecular representations of the reactan
 
 
 
-## How to add transformer to dgl?
+## How to apply an equivariant neural network to atomic modeling?
 
 ### 0.5 *Deep Graph Library*
 
@@ -538,51 +538,20 @@ DGL is an easy-to-use, high performance and scalable Python package for deep lea
 
 
 
-### 0.6 *BP-Transformer: Modelling Long-Range Context via Binary Partitioning*
+### What is an equivariant neural network?
 
-> Title:  BP-Transformer: Modelling Long-Range Context via Binary Partitioning
->
-> Journal: Arxiv	
->
-> Lead Author: Zihao Ye ( AWS Shanghai AI Lab)
->
-> Key words: a fine-to-coarse attention mechanism
->
-> Artical address: [1911.04070 (arxiv.org)](https://arxiv.org/pdf/1911.04070)
->
-> Code address: 
+Let V and W be sets, and f : V → W a function. If a group G acts on both V and W, and this action commutes with the function f: f(x · v) = x · f(v) for all v ∈ V, x ∈ G, then we say that f is **G-equivariant.** The special case where G acts trivially on W is called **G-invariant.**
+
+The novelty of equivariant neural networks is that they are usually neither linear nor continuous, even when V and W are vector
+spaces and the actions of G are linear.
 
 
 
-### 0.7 *Dark Reciprocal-Rank: Boosting Graph-Convolutional Self-Localization Network via Teacher-to-student Knowledge Transfer*
-
-> Title : Dark Reciprocal-Rank: Boosting Graph-Convolutional Self-Localization Network via Teacher-to-student Knowledge Transfer
->
-> Journal : Arxiv	
->
-> Lead Author : Takeda Koji ( AWS Shanghai AI Lab)
->
-> Key words:  a fine-to-coarse attention mechanism
->
-> Artical address : [[2011.00402 (arxiv.org)](https://arxiv.org/pdf/2011.00402)](https://arxiv.org/pdf/1911.04070)
->
-> Code address: 
 
 
 
-### 0.8 *A Generalization of Transformer Networks to Graphs*
 
-> Title: A Generalization of Transformer Networks to Graphs
->
-> Journal: Arxiv	
->
-> Lead Author: Vijay Prakash Dwivedi ( School of Computer Science and Engineering, Nanyang Technological University, Singapore)
->
-> Key words:  
->
-> Artical address: [2012.09699 (arxiv.org)](https://arxiv.org/pdf/2012.09699)
->
-> Code address: 
+
 
 
 
@@ -630,19 +599,31 @@ In this work, we demonstrate that Transformers can generalize well to 3D atomist
 >
 > https://github.com/lucidrains/equiformer-pytorch
 >
-> 
->
 > https://github.com/atomicarchitects/equiformer_v2
-
-
-
-
 
 > Code: https://github.com/atomicarchitects/equiformer
 
 ```
 MD17: http://www.quantum-machine.org/gdml/data/npz/
 ```
+
+
+
+Transformer networks have yet to perform well across datasets in the domain of 3D atomistic graphs such as molecules even when 3D-related inductive biases like translational invariance and rotational equivariance are considered. In this paper, we demonstrate that Transformers can generalize well to 3D atomistic graphs and present Equiformer, a graph neural network leveraging the strength of Transformer architectures and incorporating SE(3)/E(3)-equivariant features based on **irreducible representations (irreps).** First, we propose a simple and effective architecture by only replacing original operations in Transformers with their equivariant counterparts and including tensor products. Using equivariant operations enables encoding equivariant information in channels of irreps features without complicating graph structures. With minimal modifications to Transformers, this architecture has already achieved strong empirical results. Second, we propose a novel attention mechanism called equivariant graph attention, which improves upon typical attention in Transformers through replacing dot product attention with multi-layer perceptron attention and including non-linear message passing.
+
+> One factor contributing to the success of neural networks is the ability to incorporate **inductive biases** that exploit the symmetry of data. Take convolutional neural networks (CNNs) for 2D images as an example: Patterns in images should be recognized regardless of their positions, which motivates the inductive bias of translational equivariance. As for atomistic graphs, where each atom has its coordinate in 3D Euclidean space, we consider inductive biases related to 3D Euclidean group E(3), which include equivariance to 3D translation, 3D rotation, and inversion. 
+
+In this work, we demonstrate that Transformers can generalize well to 3D atomistic graphs and present Equiformer, an equivariant graph neural network utilizing SE(3)/E(3)-equivariant features built from irreducible representations (irreps) and a novel attention mechanism to combine the 3D-related inductive bias with the strength of Transformer. First, we propose a simple and effective architecture, Equiformer with dot product attention and linear message passing, by only replacing original operations in Transformers with their equivariant counterparts and including tensor products. Using equivariant operations
+enables encoding equivariant information in channels of irreps features without complicating graph structures. With minimal modifications to Transformers, this architecture has already achieved strong empirical results (Index 3 in Table 6 and 7). Second, we propose a novel attention mechanism called equivariant graph attention, which improves upon typical attention in Transformers through replacing dot product attention with multi-layer perceptron attention and including non-linear message passing.
+
+> - *E*(3) includes all rigid transformations: translations, rotations, and reflections.
+> - SE(3) includes rotations and translations.
+> - SO(3) includes only rotations.
+> - O(3) includes rotations and reflections.
+
+
+
+
 
 **atomistic graphs**
 
@@ -660,3 +641,9 @@ We embed input 3D graphs with atom and edge-degree embeddings and process them w
 
 
 
+```
+irreps_in: 
+irreps_node_embedding:
+irreps_node_attr:
+irreps_sh:
+```
