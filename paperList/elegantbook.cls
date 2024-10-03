@@ -1071,9 +1071,13 @@
   \end{enumerate}}
 
 \newenvironment{brief}{
-  \textbf{Brief introduction}
-  \begin{itemize}}{
-  \end{itemize}}
+  \begin{itemize}
+  \item \textbf{Brief introduction:}
+  \begin{itemize}
+}{
+  \end{itemize}
+  \end{itemize}
+}
   
 \renewcommand\tableofcontents{%
   \hypersetup{linktoc=all, linkcolor=black}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.21)  2 OCT 2024 19:45
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.21)  3 OCT 2024 18:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1159,7 +1159,7 @@ Package tocloft Info: The document has chapter divisions on input line 51.
 \cfttabnumwidth=\skip133
 )
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 1142.
+(Font)              scaled to size 10.95pt on input line 1146.
 ) (d:/Software/latex/texlive/2024/texmf-dist/tex/latex/cprotect/cprotect.sty
 Package: cprotect 2011/01/27 v1.0e (Bruno Le Floch)
  (d:/Software/latex/texlive/2024/texmf-dist/tex/latex/bigfoot/suffix.sty
@@ -1360,7 +1360,7 @@ Missing character: There is no · ("B7) in font cmr10!
 ]
 
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 102.
+(Font)              scaled to size 10.0pt on input line 101.
 [2]
 Chapter 2.
 
@@ -1373,18 +1373,18 @@ LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
  ***********
 Package rerunfilecheck Info: File `elegantbook-en.out' has not changed.
-(rerunfilecheck)             Checksum: A775D99149F3F69BF08E0E03AE037164;412.
+(rerunfilecheck)             Checksum: A23F5E5CE5E4A97304FD0E8AB055226B;581.
 Package logreq Info: Writing requests to 'elegantbook-en.run.xml'.
 \openout1 = `elegantbook-en.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42295 strings out of 474234
- 883367 string characters out of 5739122
- 1901039 words of memory out of 5000000
- 64291 multiletter control sequences out of 15000+600000
+ 42329 strings out of 474234
+ 884272 string characters out of 5739122
+ 1901249 words of memory out of 5000000
+ 64325 multiletter control sequences out of 15000+600000
  564637 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 99i,11n,107p,699b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,11n,107p,1600b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on elegantbook-en.pdf (5 pages).

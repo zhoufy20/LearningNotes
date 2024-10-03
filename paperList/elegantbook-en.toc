@@ -6,3 +6,5 @@
 \contentsline {subsection}{\numberline {1.1.4}Equiformer: Equivariant Graph Attention Transformer for 3D Atomistic Graphs}{1}{subsection.1.1.4}%
 \contentsline {subsection}{\numberline {1.1.5}EquiformerV2: Improved Equivariant Transformer for Scaling to Higher-Degree Representations}{2}{subsection.1.1.5}%
 \contentsline {chapter}{\numberline {2}Deep Molecular dynamics}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}molecular dynamics}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Breaking the size limitation of nonadiabatic molecular dynamics in condensed matter systems with local descriptor machine learning}{3}{subsection.2.1.1}%
