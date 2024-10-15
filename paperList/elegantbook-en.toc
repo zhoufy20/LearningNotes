@@ -13,6 +13,7 @@
 \contentsline {section}{\numberline {2.1}molecular dynamics}{4}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Breaking the size limitation of nonadiabatic molecular dynamics in condensed matter systems with local descriptor machine learning}{4}{subsection.2.1.1}%
 \contentsline {section}{\numberline {2.2}Multi-Agent Intelligent}{4}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}SciAgents: Automating scientific discovery through multi-agent intelligent graph reasoning}{4}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.1}MechGPT, a language-based strategy for mechanics and materials modeling that connects knowledge across scales, disciplines and modalities}{4}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}SciAgents: Automating scientific discovery through multi-agent intelligent graph reasoning}{5}{subsection.2.2.2}%
 \contentsline {section}{\numberline {2.3}CBPFNet}{5}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Identifying the ground state structures of point defects in solids}{5}{subsection.2.3.1}%
