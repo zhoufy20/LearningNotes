@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.8)  14 OCT 2024 19:36
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.8)  15 OCT 2024 09:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1362,7 +1362,7 @@ LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/n' will be
 Chapter 2.
 [4
 
-] (./elegantbook-en.aux)
+] [5] (./elegantbook-en.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1372,7 +1372,7 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `elegantbook-en.out' has not changed.
-(rerunfilecheck)             Checksum: 54B7A697F5B51FB943D7F2D959CDB059;841.
+(rerunfilecheck)             Checksum: FEDB720E7692B883D3BF4880B20EF038;1035.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                elegantbook-en
@@ -1383,12 +1383,12 @@ Package logreq Info: Writing requests to 'elegantbook-en.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42385 strings out of 474773
- 885911 string characters out of 5753724
+ 42390 strings out of 474773
+ 886051 string characters out of 5753724
  1943842 words of memory out of 5000000
- 63838 multiletter control sequences out of 15000+600000
+ 63843 multiletter control sequences out of 15000+600000
  564637 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,11n,107p,1600b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on elegantbook-en.pdf (6 pages).
+Output written on elegantbook-en.pdf (7 pages).
