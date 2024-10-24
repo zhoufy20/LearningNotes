@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.21)  15 OCT 2024 23:24
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.21)  24 OCT 2024 10:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1360,18 +1360,24 @@ Missing character: There is no · ("B7) in font cmr10!
 ]
 
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 112.
+(Font)              scaled to size 10.0pt on input line 114.
 [2]
-
-[3]
 Chapter 2.
 
 
-[4
+[3
 
 ]
 
-[5] (./elegantbook-en.aux)
+[4]
+
+[5]
+Chapter 3.
+
+
+[6
+
+] (./elegantbook-en.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
@@ -1381,7 +1387,7 @@ L3 programming layer <2024-08-30>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `elegantbook-en.out' has not changed.
-(rerunfilecheck)             Checksum: FEDB720E7692B883D3BF4880B20EF038;1035.
+(rerunfilecheck)             Checksum: E0C1DD1404E3E6642CCACDCE8B7542CC;1806.
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                elegantbook-en
@@ -1392,12 +1398,12 @@ Package logreq Info: Writing requests to 'elegantbook-en.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42360 strings out of 474234
- 885136 string characters out of 5739122
- 1902740 words of memory out of 5000000
- 64356 multiletter control sequences out of 15000+600000
+ 42361 strings out of 474234
+ 885147 string characters out of 5739122
+ 1903569 words of memory out of 5000000
+ 64357 multiletter control sequences out of 15000+600000
  564637 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,11n,107p,1600b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on elegantbook-en.pdf (7 pages).
+Output written on elegantbook-en.pdf (8 pages).
