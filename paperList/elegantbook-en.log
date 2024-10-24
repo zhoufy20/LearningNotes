@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.8)  24 OCT 2024 19:41
+=======
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.21)  24 OCT 2024 10:13
+>>>>>>> 35ed8ce290410fabc34c01e9de4884a4cb28253a
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1357,6 +1361,7 @@ Missing character: There is no · ("B7) in font cmr10!
 
 ]
 LaTeX Font Info:    Font shape `TU/TeXGyreTermesX(0)/m/n' will be
+<<<<<<< HEAD
 (Font)              scaled to size 10.0pt on input line 124.
  [2] [3]
 Chapter 2.
@@ -1365,6 +1370,26 @@ Chapter 2.
 ] [5]
 Missing character: There is no ∼ (U+223C) in font [TeXGyreTermesX-Regular.otf]/OT:script=latn;language=dflt;mapping=tex-text;!
 [6] [7] (./elegantbook-en.aux)
+=======
+(Font)              scaled to size 10.0pt on input line 114.
+[2]
+Chapter 2.
+
+
+[3
+
+]
+
+[4]
+
+[5]
+Chapter 3.
+
+
+[6
+
+] (./elegantbook-en.aux)
+>>>>>>> 35ed8ce290410fabc34c01e9de4884a4cb28253a
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -1374,7 +1399,11 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `elegantbook-en.out' has not changed.
+<<<<<<< HEAD
 (rerunfilecheck)             Checksum: 0F18D2C6195C7E82E127D77380CEA34F;1252.
+=======
+(rerunfilecheck)             Checksum: E0C1DD1404E3E6642CCACDCE8B7542CC;1806.
+>>>>>>> 35ed8ce290410fabc34c01e9de4884a4cb28253a
 
 Package biblatex Warning: Please (re)run Biber on the file:
 (biblatex)                elegantbook-en
@@ -1385,12 +1414,23 @@ Package logreq Info: Writing requests to 'elegantbook-en.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  42400 strings out of 474773
  886331 string characters out of 5753724
  1943842 words of memory out of 5000000
  63853 multiletter control sequences out of 15000+600000
+=======
+ 42361 strings out of 474234
+ 885147 string characters out of 5739122
+ 1903569 words of memory out of 5000000
+ 64357 multiletter control sequences out of 15000+600000
+>>>>>>> 35ed8ce290410fabc34c01e9de4884a4cb28253a
  564637 words of font info for 85 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  99i,12n,107p,1600b,803s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+<<<<<<< HEAD
 Output written on elegantbook-en.pdf (9 pages).
+=======
+Output written on elegantbook-en.pdf (8 pages).
+>>>>>>> 35ed8ce290410fabc34c01e9de4884a4cb28253a

@@ -32,7 +32,7 @@ Research entry point : which methodologies have been employed to address the fun
 
 \mainmatter
 
-\chapter{Transformer}
+\chapter{Large Language Model}
 \section{Equiformer}
 
 \subsection{What is an equivariant neural network?}
@@ -106,32 +106,6 @@ One factor contributing to the success of neural networks is the ability to inco
 
 
 
-\section{Inverse design}
-\subsection{An invertible, invariant crystal representation for inverse design of solid-state materials using generative deep learning}
-\begin{brief}
-    \item Journal: Nature Communications
-    \item Lead Author: Hang Xiao, Xi Chen(School of Interdisciplinary Studies, Lingnan University, Tuen Mun, Hong Kong SAR, China.)
-    \item Artical address: \href{https://doi.org/10.1038/s41467-023-42870-7}{https://doi.org/10.1038/s41467-023-42870-7}
-    \item Code address: 
-\end{brief}
-The past decade has witnessed rapid progress in deep learning for molecular
-design, owing to the availability of invertible and invariant representations for
-molecules such as simplified molecular-input line-entry system (SMILES),
-which has powered cheminformatics since the late 1980s.
-
-This is primarily due to, unlike molecular inverse design, the lack of an invertible crystal representation such as simplified molecular-input line-entry system (SMILES) that satisfies translational, rotational, and permutational invariances. To address this issue, we have developed a simplified line-input crystal-encoding system (SLICES), which is a string-based crystal representation that satisfies both invertibility and invariances.
-
-The reconstruction of crystal structures from SLICES strings involves three steps: 
-\begin{enumerate}
-    \item initial structure generation with graph theory techniques
-    \item optimization based on chemically meaningful geometry predicted with modified Geometry Frequency Noncovalent Force Field (GFN-FF)
-    \item structural refinement using universal graph deep learning interatomic potential
-\end{enumerate}
-
-
-
-
-
 
 \chapter{Deep Molecular dynamics}
 
@@ -146,6 +120,30 @@ The reconstruction of crystal structures from SLICES strings involves three step
 \end{brief}
 
 We have developed a fully ML approach to perform NA-MD simulations in large condensed-phase, nanoscale, and molecular systems. We have demonstrated that ML models based on local structural descriptors provide all the input needed to perform NAMD. The final NA-MD results are close to the ab initio calculations, performed using DFT and CPA, and the errors are within the accuracy of the current NA-MD methodologies and experimental uncertainties. Using the developed approach, we have elucidated the dependence of carrier trapping and recombination in defective MoS2 on defect concentration. This information is needed for design of optoelectronic and solar energy devices, and it is challenging to obtain from the conventional DFT/NA-MD investigations. The results show that the charge trapping rate decreases with decreasing defect concentration, while the charge recombination rate may or may not depend on defect concentration, conditional on whether the recombination occurs between free and trapped, or trapped charges, and on the relative concentrations of defects and carriers. The simulations have also shown that the dependence on defect concentration can vary with temperature, in particular, since delocalized shallow traps can become localized due to structure fluctuations. The developed approach provides an orders-of-magnitude speedup of NA-MD simulation compared to the traditional ab initio DFT simulation and can be accelerated further, presenting a valuable tool for modeling and characterization of excited state dynamics in realistic systems.
+
+
+\section{DeePMD}
+\subsection{MACE: Higher Order Equivariant Message Passing Neural Networks for Fast and Accurate Force Fields}
+\begin{brief}
+    \item Journal: Arxiv(Part of Advances in Neural Information Processing Systems 35 (NeurIPS 2022) Main Conference Track)
+    \item Lead Author: Ilyes Batatia(Engineering Laboratory, University of Cambridge, Cambridge, UK)
+    \item Artical address: \href{https://arxiv.org/abs/2206.07697}{https://arxiv.org/abs/2206.07697}
+    \item Code address: \href{https://github.com/ACEsuit/mace}{https://github.com/ACEsuit/mace}
+\end{brief}
+We summarise our main contributions as follows:
+\begin{itemize}
+    \item We introduce MACE, a novel architecture combining equivariant message passing with efficient many-body messages. The MACE models achieve state-of-the-art performance on challenging benchmark tests. They also display greater generalization capabilities over other approaches on extrapolation benchmarks.
+    \item We demonstrate that many-body messages change the power of the empirical power-law of the learning curves. Furthermore, we show experimentally that the addition of equivariant messages only shifts the learning curves but does not change the power law when higher order messages are used.
+    \item We show that MACE does not only outperform previous approaches in terms of accuracy but also does so while being significantly faster to train and evaluate than the previous most accurate models.
+\end{itemize}
+
+\subsection{DeePMD-kit: A deep learning package for many-body potential energy representation and molecular dynamics.}
+\begin{brief}
+    \item Journal: Computer Physics Communications 
+    \item Lead Author: Han Wang(Institute of Applied Physics and Computational Mathematics, Fenghao East Road 2, Beijing 100094, PR China)
+    \item Artical address: \href{https://www.sciencedirect.com/science/article/pii/S0010465518300882}{https://www.sciencedirect.com/science/article/pii/S0010465518300882}
+    \item Code address: \href{https://github.com/deepmodeling}{https://github.com/deepmodeling}
+\end{brief}
 
 
 \section{Multi-Agent Intelligent}
